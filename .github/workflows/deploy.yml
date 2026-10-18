@@ -28,8 +28,13 @@ jobs:
         env:
           SERWER: ${{ secrets.FTP_SERWER }}
           LOGIN: ${{ secrets.FTP_LOGIN }}
-          HASLO: ${{ secrets.FTP_HASLO }}
+          LFTP_PASSWORD: ${{ secrets.FTP_HASLO }}
         run: |
-          lftp -c "set ftp:ssl-allow true; set ssl:verify-certificate false; set net:max-retries 3; set net:timeout 20;
-          open -u \"$LOGIN\",\"$HASLO\" \"$SERWER\";
-          mirror --reverse --delete --verbose --parallel=4 --exclude-glob .git/ strona/out/ /;"
+          lftp --env-password -u "$LOGIN" "$SERWER" <<'KONIEC'
+          set ftp:ssl-allow true
+          set ssl:verify-certificate false
+          set net:max-retries 3
+          set net:timeout 20
+          mirror --reverse --delete --verbose --parallel=4 --exclude-glob .git/ strona/out/ /
+          quit
+          KONIEC
