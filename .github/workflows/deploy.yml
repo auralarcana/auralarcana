@@ -32,10 +32,9 @@ jobs:
         run: |
           lftp --env-password -u "$LOGIN" "$SERWER" <<'KONIEC'
           debug 3
-          set ftp:ssl-allow true
-          set ssl:verify-certificate false
+          set ftp:ssl-allow false
           set net:max-retries 1
-          set net:timeout 15
+          set net:timeout 20
           ls
           quit
           KONIEC
@@ -46,8 +45,7 @@ jobs:
           LFTP_PASSWORD: ${{ secrets.FTP_HASLO }}
         run: |
           lftp --env-password -u "$LOGIN" "$SERWER" <<'KONIEC'
-          set ftp:ssl-allow true
-          set ssl:verify-certificate false
+          set ftp:ssl-allow false
           set net:max-retries 3
           set net:timeout 20
           mirror --reverse --delete --verbose --parallel=4 --exclude-glob .git/ strona/out/ /
