@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  --color-noc: #0b0a12;
+  --color-noc-2: #121020;
+  --color-noc-3: #1a1630;
+  --color-kosc: #e8e1cf;
+  --color-przygaszony: #a79e8b;
+  --color-zloto: #c6a35f;
+  --color-zloto-2: #e8d7a8;
+  --color-fiolet: #8d78bd;
+  --color-linia: rgba(198, 163, 95, 0.22);
+
+  --font-naglowki: var(--font-cinzel), serif;
+  --font-tekst: var(--font-garamond), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-noc);
+  color: var(--color-kosc);
+  font-family: var(--font-tekst);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(198, 163, 95, 0.35);
+  color: #fff8e7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-naglowki);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-zloto-2);
+}
+
+/* Subtelne tło: mgławica + winieta. Gwiazdy dokłada komponent w layoucie. */
+.tlo-sanktuarium {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(80, 60, 130, 0.22), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 100%, rgba(60, 40, 90, 0.14), transparent 60%),
+    var(--color-noc);
+}
+
+/* Ozdobny separator */
+.separator-gwiazda {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-zloto);
+}
+.separator-gwiazda::before,
+.separator-gwiazda::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, var(--color-linia), transparent);
+}
+
+/* Etykiety kapitalikami */
+.etykieta {
+  font-family: var(--font-naglowki);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-zloto);
+}
+
+/* Linki w treści */
+.tekst-artykulu a {
+  color: var(--color-zloto-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-linia);
+}
+.tekst-artykulu a:hover {
+  text-decoration-color: var(--color-zloto);
+}
+
+/* Karty 3D: odkrywanie przez obrót */
+.karta-scena {
+  perspective: 1200px;
+}
+.karta-bryla {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.karta-bryla.odkryta {
+  transform: rotateY(180deg);
+}
+.karta-awers,
+.karta-rewers {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.karta-awers {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* Wachlarz wyboru kart */
+.karta-wybor {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.karta-wybor:hover,
+.karta-wybor:focus-visible {
+  transform: translateY(-14px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 24px rgba(198, 163, 95, 0.18);
+  outline: none;
+}
+.karta-wybor:focus-visible {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 0 2px var(--color-zloto);
+}
+
+/* Delikatne wejście sekcji */
+@keyframes wyplyniecie {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.wejscie {
+  animation: wyplyniecie 0.6s ease both;
+}
+
+/* Pulsowanie zaproszenia */
+@keyframes poswiata {
+  0%, 100% { box-shadow: 0 0 0 rgba(198, 163, 95, 0); }
+  50% { box-shadow: 0 0 28px rgba(198, 163, 95, 0.22); }
+}
+.poswiata {
+  animation: poswiata 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .karta-bryla { transition: none; }
+  .karta-wybor { transition: none; }
+  .karta-wybor:hover { transform: none; }
+  .wejscie { animation: none; }
+  .poswiata { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+}
