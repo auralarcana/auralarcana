@@ -1,0 +1,35 @@
+name: Buduj i wdroz na Hostingera
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Instalacja
+        working-directory: strona
+        run: npm ci || npm install
+      - name: Build
+        working-directory: strona
+        run: npm run build
+      - name: Sprawdzenie buildu
+        working-directory: strona
+        run: |
+          test -f out/index.html || { echo "Brak out/index.html"; exit 1; }
+          test -f out/.htaccess || echo "UWAGA: brak .htaccess"
+          test -f out/.well-known/ai.txt || echo "UWAGA: brak .well-known/ai.txt"
+      - name: lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Wysylka FTP
+        env:
+          SERWER: ${{ secrets.FTP_SERWER }}
+          LOGIN: ${{ secrets.FTP_LOGIN }}
+          HASLO: ${{ secrets.FTP_HASLO }}
+        run: |
+          lftp -c "set ftp:ssl-allow true; set ssl:verify-certificate false; set net:max-retries 3; set net:timeout 20;
+          open -u \"$LOGIN\",\"$HASLO\" \"$SERWER\";
+          mirror --reverse --delete --verbose --parallel=4 --exclude-glob .git/ strona/out/ /public_html/;"
