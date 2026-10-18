@@ -32,4 +32,4 @@ jobs:
         run: |
           lftp -c "set ftp:ssl-allow true; set ssl:verify-certificate false; set net:max-retries 3; set net:timeout 20;
           open -u \"$LOGIN\",\"$HASLO\" \"$SERWER\";
-          mirror --reverse --delete --verbose --parallel=4 --exclude-glob .git/ strona/out/ /public_html/;"
+          mirror --reverse --delete --verbose --parallel=4 --exclude-glob .git/ strona/out/ /;"
