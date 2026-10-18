@@ -1,0 +1,19 @@
+# Zaleznosci i build
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# System
+.DS_Store
+Thumbs.db
+
+# Srodowisko
+.env
+.env.local
+.env*.local
+
+# Logi
+npm-debug.log*
+*.log
