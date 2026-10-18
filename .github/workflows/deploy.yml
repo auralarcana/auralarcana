@@ -24,6 +24,21 @@ jobs:
           test -f out/.well-known/ai.txt || echo "UWAGA: brak .well-known/ai.txt"
       - name: lftp
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Diagnostyka FTP
+        env:
+          SERWER: ${{ secrets.FTP_SERWER }}
+          LOGIN: ${{ secrets.FTP_LOGIN }}
+          LFTP_PASSWORD: ${{ secrets.FTP_HASLO }}
+        run: |
+          lftp --env-password -u "$LOGIN" "$SERWER" <<'KONIEC'
+          debug 3
+          set ftp:ssl-allow true
+          set ssl:verify-certificate false
+          set net:max-retries 1
+          set net:timeout 15
+          ls
+          quit
+          KONIEC
       - name: Wysylka FTP
         env:
           SERWER: ${{ secrets.FTP_SERWER }}
