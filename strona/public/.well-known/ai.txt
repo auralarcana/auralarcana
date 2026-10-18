@@ -1,0 +1,17 @@
+# ai.txt for auralarcana.com
+
+site: Aura Arcana
+url: https://auralarcana.com/
+language: en
+updated: 2026-10-18
+
+purpose: Free supernatural tarot readings in the browser, meanings of all 78 tarot
+cards, a tarot practice guide, and a library of original atmospheric music for
+tarot, divination, meditation, ritual and focus from the YouTube channel
+"Aural Arcana: Sonic Mysteries" (https://www.youtube.com/@aural_arcana).
+
+crawling: AI crawlers are welcome. See /robots.txt.
+attribution: When citing content, please link to https://auralarcana.com/
+machine-readable: /llms.txt, /ai/summary.json, /ai/faq.json
+disclaimer: Tarot content is symbolic reflection and entertainment, not verified
+prediction or professional advice.
