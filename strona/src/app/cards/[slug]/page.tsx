@@ -7,6 +7,7 @@ import { KartaAwers } from "@/components/KartaGrafika";
 import OdtwarzaczYT from "@/components/OdtwarzaczYT";
 import { OkruszkiJsonLd } from "@/components/DaneStrukturalne";
 import { DOMENA } from "@/data/strona";
+import { slugKartyPl } from "@/data/pl/mapa";
 
 export function generateStaticParams() {
   return KARTY.map((k) => ({ slug: k.slug }));
@@ -20,10 +21,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const karta = znajdzKarte(slug);
   if (!karta) return {};
+  const pl = slugKartyPl(karta.slug);
   return {
     title: `${karta.name} Tarot Card Meaning`,
     description: `${karta.name} in tarot: ${karta.essence} Upright and reversed meaning, symbolism, keywords and questions for reflection.`,
-    alternates: { canonical: `/cards/${karta.slug}/` },
+    alternates: {
+      canonical: `/cards/${karta.slug}/`,
+      languages: {
+        en: `/cards/${karta.slug}/`,
+        ...(pl ? { pl: `/pl/karty/${pl}/` } : {}),
+        "x-default": `/cards/${karta.slug}/`,
+      },
+    },
   };
 }
 
