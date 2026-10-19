@@ -10,7 +10,10 @@ import { ARTYKULY } from "@/data/artykuly";
 import { FAQ, KANAL_YT, NAZWA } from "@/data/strona";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { en: "/", pl: "/pl/", "x-default": "/" },
+  },
 };
 
 export default function StronaGlowna() {

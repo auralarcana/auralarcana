@@ -7,14 +7,14 @@ import { OrganizacjaISerwis } from "@/components/DaneStrukturalne";
 import { DOMENA, NAZWA, OPIS_KROTKI } from "@/data/strona";
 
 const cinzel = Cinzel({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600"],
   variable: "--font-cinzel",
   display: "swap",
 });
 
 const garamond = EB_Garamond({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "500"],
   style: ["normal", "italic"],
   variable: "--font-garamond",
