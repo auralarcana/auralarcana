@@ -9,7 +9,10 @@ export const metadata: Metadata = {
   title: "Music for Tarot, Ritual and Focus",
   description:
     "Original atmospheric music for tarot readings, divination, meditation and deep work: mystical ambient, dark soundscapes and lofi focus sessions from the Aural Arcana YouTube channel, organized by purpose, mood and length.",
-  alternates: { canonical: "/music/" },
+  alternates: {
+    canonical: "/music/",
+    languages: { en: "/music/", pl: "/pl/muzyka/", "x-default": "/music/" },
+  },
 };
 
 export default function StronaMuzyki() {
