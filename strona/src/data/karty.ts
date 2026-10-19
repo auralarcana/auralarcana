@@ -8,6 +8,8 @@ export type Kolor = "wands" | "cups" | "swords" | "pentacles";
 
 export interface KartaTarota {
   slug: string;
+  /** Slug odpowiednika w drugim języku (EN<->PL), do hreflang i przełącznika języka. */
+  slugEn?: string;
   name: string;
   arcana: "major" | "minor";
   suit?: Kolor;
