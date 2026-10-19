@@ -9,7 +9,10 @@ export const metadata: Metadata = {
   title: "Tarot Card Meanings: All 78 Cards",
   description:
     "The complete tarot deck explained: all 22 Major Arcana and 56 Minor Arcana cards with upright and reversed meanings, symbolism, keywords and questions for reflection.",
-  alternates: { canonical: "/cards/" },
+  alternates: {
+    canonical: "/cards/",
+    languages: { en: "/cards/", pl: "/pl/karty/", "x-default": "/cards/" },
+  },
 };
 
 export default function StronaKart() {
