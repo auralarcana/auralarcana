@@ -6,7 +6,10 @@ export const metadata: Metadata = {
   title: "About Aura Arcana",
   description:
     "Aura Arcana joins supernatural tarot with original atmospheric music: free readings, the meanings of all 78 cards, and soundscapes composed for divination, ritual and focus.",
-  alternates: { canonical: "/about/" },
+  alternates: {
+    canonical: "/about/",
+    languages: { en: "/about/", pl: "/pl/o-projekcie/", "x-default": "/about/" },
+  },
 };
 
 export default function StronaONas() {
