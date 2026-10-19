@@ -2,8 +2,8 @@
 
 site: Aura Arcana
 url: https://auralarcana.com/
-language: en
-updated: 2026-10-18
+language: en (Polish version under /pl/)
+updated: 2026-10-19
 
 purpose: Free supernatural tarot readings in the browser, meanings of all 78 tarot
 cards, a tarot practice guide, and a library of original atmospheric music for
