@@ -223,8 +223,11 @@ function seedKarty(karta: KartaTarota): number {
 
 export function KartaAwers(props: { karta: KartaTarota; className?: string }) {
   const { karta } = props;
+  // Wielkie Arkana: glif po slugu angielskim (wersja polska niesie go w slugEn).
   const glif =
-    karta.arcana === "major" ? GLIFY[karta.slug] : GLIFY_KOLOROW[karta.suit ?? "wands"];
+    karta.arcana === "major"
+      ? (GLIFY[karta.slug] ?? GLIFY[karta.slugEn ?? ""])
+      : GLIFY_KOLOROW[karta.suit ?? "wands"];
   const kropki =
     karta.arcana === "minor" && karta.number <= 10
       ? Array.from({ length: karta.number }, (_, i) => i)
@@ -235,7 +238,7 @@ export function KartaAwers(props: { karta: KartaTarota; className?: string }) {
       viewBox="0 0 300 500"
       className={props.className}
       role="img"
-      aria-label={`${karta.name} tarot card`}
+      aria-label={karta.slugEn ? `${karta.name}, karta tarota` : `${karta.name} tarot card`}
     >
       <rect x="0" y="0" width="300" height="500" fill="#121020" />
       <rect x="10" y="10" width="280" height="480" fill="none" stroke={ZLOTO} strokeWidth="1.6" />

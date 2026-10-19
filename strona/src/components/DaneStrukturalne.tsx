@@ -39,11 +39,13 @@ export function OrganizacjaISerwis() {
 }
 
 // FAQPage budowany z TEJ SAMEJ tablicy co widoczne FAQ na stronie głównej.
-export function FaqJsonLd() {
+// Wersja polska podaje własną tablicę przez props.
+export function FaqJsonLd(props: { faq?: { pytanie: string; odpowiedz: string }[] } = {}) {
+  const lista = props.faq ?? FAQ;
   const dane = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: FAQ.map((f) => ({
+    mainEntity: lista.map((f) => ({
       "@type": "Question",
       name: f.pytanie,
       acceptedAnswer: { "@type": "Answer", text: f.odpowiedz },
@@ -62,6 +64,7 @@ export function ArtykulJsonLd(props: {
   opis: string;
   data: string;
   url: string;
+  jezyk?: "en" | "pl";
 }) {
   const dane = {
     "@context": "https://schema.org",
@@ -70,7 +73,7 @@ export function ArtykulJsonLd(props: {
     description: props.opis,
     datePublished: props.data,
     dateModified: DATA_MODYFIKACJI,
-    inLanguage: "en",
+    inLanguage: props.jezyk ?? "en",
     url: props.url,
     author: { "@id": `${DOMENA}/#organizacja` },
     publisher: { "@id": `${DOMENA}/#organizacja` },
