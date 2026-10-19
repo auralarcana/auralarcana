@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ARTYKULY, znajdzArtykul } from "@/data/artykuly";
 import { ArtykulJsonLd, OkruszkiJsonLd } from "@/components/DaneStrukturalne";
 import { DOMENA } from "@/data/strona";
+import { slugArtykuluPl } from "@/data/pl/mapa";
 
 export function generateStaticParams() {
   return ARTYKULY.map((a) => ({ slug: a.slug }));
@@ -17,10 +18,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const artykul = znajdzArtykul(slug);
   if (!artykul) return {};
+  const pl = slugArtykuluPl(artykul.slug);
   return {
     title: artykul.title,
     description: artykul.description,
-    alternates: { canonical: `/guide/${artykul.slug}/` },
+    alternates: {
+      canonical: `/guide/${artykul.slug}/`,
+      languages: {
+        en: `/guide/${artykul.slug}/`,
+        ...(pl ? { pl: `/pl/przewodnik/${pl}/` } : {}),
+        "x-default": `/guide/${artykul.slug}/`,
+      },
+    },
   };
 }
 
