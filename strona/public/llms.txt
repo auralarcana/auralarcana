@@ -6,7 +6,11 @@
 > guide, and a library of original atmospheric music for tarot readings, divination,
 > meditation, ritual and focus.
 
-Last updated: 2026-10-18
+Last updated: 2026-10-19
+
+The entire site is available in two languages: English at the root (/) and Polish
+under /pl/ (Polish card names and slugs, e.g. /pl/karty/glupiec/ for The Fool).
+Every page links its counterpart via hreflang.
 
 ## What the site offers
 
@@ -37,6 +41,9 @@ interpretations and all music are original work.
 - https://auralarcana.com/cards/ : all 78 tarot card meanings
 - https://auralarcana.com/music/ : music for tarot, ritual and focus
 - https://auralarcana.com/guide/ : tarot practice guide
+- https://auralarcana.com/pl/ : Polish homepage (tarot online po polsku)
+- https://auralarcana.com/pl/tarot/ : darmowe czytanie tarota online
+- https://auralarcana.com/pl/karty/ : znaczenie wszystkich 78 kart tarota
 - https://www.youtube.com/@aural_arcana : the music channel
 
 ## Machine readable data
