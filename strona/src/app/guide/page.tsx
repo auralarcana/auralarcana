@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: "Tarot Guide: How to Read the Cards",
   description:
     "Guides to reading tarot honestly: how a reading works, what the Major and Minor Arcana mean, how to choose a spread, and how music and atmosphere deepen the practice.",
-  alternates: { canonical: "/guide/" },
+  alternates: {
+    canonical: "/guide/",
+    languages: { en: "/guide/", pl: "/pl/przewodnik/", "x-default": "/guide/" },
+  },
 };
 
 export default function StronaPrzewodnika() {
