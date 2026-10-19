@@ -4,7 +4,10 @@ export const metadata: Metadata = {
   title: "Privacy",
   description:
     "How Aura Arcana handles your data: readings run entirely in your browser and are never stored, analytics are cookieless, and YouTube embeds load only after you press play.",
-  alternates: { canonical: "/privacy/" },
+  alternates: {
+    canonical: "/privacy/",
+    languages: { en: "/privacy/", pl: "/pl/prywatnosc/", "x-default": "/privacy/" },
+  },
 };
 
 // Treść do przeglądu przez właścicielkę przed startem komercyjnym.
