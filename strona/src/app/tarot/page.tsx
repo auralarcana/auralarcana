@@ -7,7 +7,10 @@ export const metadata: Metadata = {
   title: "Free Online Tarot Reading",
   description:
     "Draw from a full 78 card tarot deck, free and with no sign up. Choose a one card, three card or five card spread, reveal your cards and read their meanings, together with how they speak to one another.",
-  alternates: { canonical: "/tarot/" },
+  alternates: {
+    canonical: "/tarot/",
+    languages: { en: "/tarot/", pl: "/pl/tarot/", "x-default": "/tarot/" },
+  },
 };
 
 export default function StronaTarot() {
