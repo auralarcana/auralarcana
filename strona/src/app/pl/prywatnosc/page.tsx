@@ -34,8 +34,10 @@ export default function StronaPrywatnosciPl() {
           <h2 className="mb-3 text-2xl">Bez kont, bez cookies śledzących</h2>
           <p>
             Ta strona nie ma kont użytkowników i nie ustawia cookies reklamowych ani śledzących.
-            Jeśli używamy analityki, jest to bezcookiesowy, zbiorczy pomiar ruchu (odsłony i
-            źródła wejść), bez profilu ciebie jako osoby.
+            Ruch mierzymy za pomocą Cloudflare Web Analytics: bez cookies i wyłącznie zbiorczo
+            (odsłony, źródła wejść, kraj, typ urządzenia), bez tworzenia profilu ciebie jako osoby.
+            Korzystamy też z Google Search Console, które pokazuje, jak strona wypada w wynikach
+            Google, i niczego nie zapisuje w twojej przeglądarce.
           </p>
         </section>
 
