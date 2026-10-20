@@ -58,13 +58,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Naglowek />
         <main id="tresc">{children}</main>
         <Stopka />
-        {/* Analityka: Cloudflare Web Analytics (bezcookiesowa).
-            Po założeniu strony w panelu Cloudflare wklej token poniżej i odkomentuj.
+        {/* Analityka: Cloudflare Web Analytics (bezcookiesowa, bez banera zgody).
+            Token jest publiczny z natury (trafia do każdej przeglądarki). */}
         <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "TU_TOKEN"}'
-        /> */}
+          data-cf-beacon='{"token": "267582dd803346bb9b8dbbc5a739c4b3"}'
+        />
       </body>
     </html>
   );
