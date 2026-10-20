@@ -33,9 +33,11 @@ export default function StronaPrywatnosci() {
         <section>
           <h2 className="mb-3 text-2xl">No accounts, no tracking cookies</h2>
           <p>
-            This site has no user accounts and sets no advertising or tracking cookies. If we use
-            analytics, it is cookieless, aggregate traffic measurement (page views and referrers),
-            with no profile of you as an individual.
+            This site has no user accounts and sets no advertising or tracking cookies. We measure
+            traffic with Cloudflare Web Analytics, which is cookieless and aggregate (page views,
+            referrers, country, device type) and builds no profile of you as an individual. We
+            also use Google Search Console, which reports how the site appears in Google search
+            and places nothing in your browser.
           </p>
         </section>
 
