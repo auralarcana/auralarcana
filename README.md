@@ -61,15 +61,17 @@ UWAGA: `mirror --delete` kasuje z `public_html` wszystko, czego nie ma w buildzi
 
 ## Analityka
 
-Cloudflare Web Analytics (bez cookies): po założeniu w panelu Cloudflare wklej token w `src/app/layout.tsx` (zakomentowany blok na dole) i odkomentuj. Dzięki temu strona nie potrzebuje banera zgody.
+- **Cloudflare Web Analytics** (bez cookies, bez banera zgody): AKTYWNE, beacon w `src/app/layout.tsx`. Panel: Cloudflare → Analytics → Web analytics → auralarcana.com.
+- **Google Search Console**: property `https://auralarcana.com/` weryfikowane plikiem `public/google3324b7616df0327b.html` (NIE USUWAĆ), sitemap zgłoszony.
+- Google Analytics świadomie NIE jest używane: wymagałoby banera cookies w UE.
 
 ## Do uzupełnienia przez właścicielkę
 
 - [ ] Sekrety FTP w GitHubie (wyżej)
 - [ ] Domena auralarcana.com podpięta do Hostingera (jeśli inna, zmień `DOMENA` w `src/data/strona.ts` i domenę w `public/.htaccess`)
-- [ ] Token Cloudflare Web Analytics (opcjonalnie)
+- [x] Cloudflare Web Analytics
 - [ ] Przegląd treści prawnych: `/privacy/` (oznaczone w kodzie)
-- [ ] Google Search Console: property + sitemap
+- [x] Google Search Console: property + sitemap
 
 ## Model sprzedaży (ustalony kierunek)
 
