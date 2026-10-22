@@ -45,6 +45,102 @@ export const KATEGORIE_PL: KategoriaMuzyki[] = [
 
 export const UTWORY_PL: Utwor[] = [
   {
+    sku: "tarot-the-moon-1",
+    youtubeId: "ZThVVIKxl1s",
+    title: "Tarot · The Moon I",
+    description:
+      "Spokojny, mroczny ambient mistyczny inspirowany kartą Księżyc: narastające drony, kryształowe misy i odległy chór bez słów w ogromnym pogłosie katedry.",
+    atmosphere: "Intuicyjne czytania, praca ze snami, nocna medytacja.",
+    duration: "3:34",
+    minutes: 4,
+    categories: ["tarot-sessions", "mystical-ambient"],
+    moods: ["nocny", "senny", "głęboki"],
+  },
+  {
+    sku: "tarot-the-moon-2",
+    youtubeId: "A2-32UW-vAQ",
+    title: "Tarot · The Moon II",
+    description:
+      "Druga część sesji Księżyca: kryształowe misy, niskie drony i odległy chór unoszący się jak mgła nad nieruchomą wodą.",
+    atmosphere: "Pisanie dziennika, praca z intuicją, zasypianie z pytaniem.",
+    duration: "3:45",
+    minutes: 4,
+    categories: ["tarot-sessions", "mystical-ambient"],
+    moods: ["mglisty", "spokojny", "intuicyjny"],
+  },
+  {
+    sku: "tarot-the-hermit-1",
+    youtubeId: "hLQJc959_jU",
+    title: "Tarot · The Hermit I",
+    description:
+      "Minimalistyczny ambient dla Pustelnika: rzadkie dźwięki wyciszonego pianina, ciepły szum taśmy i miękki analogowy pad, z długą ciszą między nutami.",
+    atmosphere: "Czytania w samotności, refleksja, cicha praca wewnętrzna.",
+    duration: "3:04",
+    minutes: 3,
+    categories: ["tarot-sessions"],
+    moods: ["samotny", "ciepły", "oszczędny"],
+  },
+  {
+    sku: "tarot-the-hermit-2",
+    youtubeId: "rPEUGfq1kjU",
+    title: "Tarot · The Hermit II",
+    description:
+      "Ciąg dalszy sesji Pustelnika: wyciszone pianino, ciepło taśmy i powolne pady na wieczory z jednym szczerym pytaniem.",
+    atmosphere: "Dziennik, praca z cieniem, wieczorne czytania.",
+    duration: "3:15",
+    minutes: 3,
+    categories: ["tarot-sessions"],
+    moods: ["cichy", "refleksyjny", "czuły"],
+  },
+  {
+    sku: "aural-arcana-eclipse-1",
+    youtubeId: "B4iC2z7JNp8",
+    title: "Aural Arcana · Eclipse I",
+    description:
+      "Niebiański dark ambient: niski dron smyczkowej wiolonczeli, granularne migotanie, nocne świerszcze i powoli narastające pady w kosmicznym pogłosie.",
+    atmosphere: "Sesje tarota, głębokie skupienie, patrzenie w gwiazdy.",
+    duration: "3:18",
+    minutes: 3,
+    categories: ["otherworldly", "tarot-sessions"],
+    moods: ["niebiański", "mroczny", "rozległy"],
+  },
+  {
+    sku: "aural-arcana-eclipse-2",
+    youtubeId: "t2BUdLJbWeo",
+    title: "Aural Arcana · Eclipse II",
+    description:
+      "Druga połowa sesji Zaćmienia: drony wiolonczeli, świerszcze na skraju nocy i powolna niebiańska fala.",
+    atmosphere: "Rytuał, medytacja, długie rozkłady.",
+    duration: "3:19",
+    minutes: 3,
+    categories: ["otherworldly", "mystical-ambient"],
+    moods: ["nocny", "powolny", "kosmiczny"],
+  },
+  {
+    sku: "aural-arcana-ritual-1",
+    youtubeId: "CYp3OgdLH1I",
+    title: "Aural Arcana · Ritual I",
+    description:
+      "Hipnotyczny ambient rytualny: odległe bicie bębna ramowego, smyczkowany metal, dymne niskie drony i głęboki pomruk, jak w starożytnej świątyni przy świecach.",
+    atmosphere: "Rytuały przy świecach, tarot, medytacja w ruchu.",
+    duration: "3:35",
+    minutes: 4,
+    categories: ["mystical-ambient", "tarot-sessions"],
+    moods: ["hipnotyczny", "starożytny", "dymny"],
+  },
+  {
+    sku: "aural-arcana-ritual-2",
+    youtubeId: "CNThC06we44",
+    title: "Aural Arcana · Ritual II",
+    description:
+      "Ciąg dalszy sesji w świątyni: puls bębna ramowego, smyczkowany metal i gęste od kadzidła drony na rytuały przy świecach i długie czytania.",
+    atmosphere: "Rytuały przy świecach, praca magiczna, długie czytania.",
+    duration: "3:35",
+    minutes: 4,
+    categories: ["mystical-ambient"],
+    moods: ["miarowy", "kadzidlany", "ceremonialny"],
+  },
+  {
     sku: "solastalgia-vol1",
     youtubeId: "7fbAjUR-jpI",
     title: "S O L A S T A L G I A, Vol. 1",

@@ -261,7 +261,7 @@ export const KARTY_WIELKIE_PL: KartaTarota[] = [
       "Czy moje wycofanie jest poszukiwaniem, czy ucieczką?",
       "Czego nauczyłam, nauczyłem się w ciemności, co jest teraz potrzebne komuś innemu?",
     ],
-    musicSku: "bene-gesserit",
+    musicSku: "tarot-the-hermit-1",
   },
   {
     slug: "kolo-fortuny",
@@ -477,7 +477,7 @@ export const KARTY_WIELKIE_PL: KartaTarota[] = [
       "Co mówi moja intuicja, co mój niepokój wciąż zagłusza?",
       "Jaka decyzja powinna poczekać, aż mgła opadnie?",
     ],
-    musicSku: "solastalgia-vol1",
+    musicSku: "tarot-the-moon-1",
   },
   {
     slug: "slonce",
