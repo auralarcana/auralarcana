@@ -61,6 +61,102 @@ export interface Utwor {
 
 export const UTWORY: Utwor[] = [
   {
+    sku: "tarot-the-moon-1",
+    youtubeId: "ZThVVIKxl1s",
+    title: "Tarot · The Moon I",
+    description:
+      "Slow, dark mystical ambient inspired by The Moon card: evolving drones, crystal singing bowls and a distant wordless choir under a vast cathedral reverb.",
+    atmosphere: "Intuitive readings, dreamwork, night meditation.",
+    duration: "3:34",
+    minutes: 4,
+    categories: ["tarot-sessions", "mystical-ambient"],
+    moods: ["nocturnal", "dreamlike", "deep"],
+  },
+  {
+    sku: "tarot-the-moon-2",
+    youtubeId: "A2-32UW-vAQ",
+    title: "Tarot · The Moon II",
+    description:
+      "The second movement of the Moon session: crystal bowls, low drones and a distant choir drifting like mist over still water.",
+    atmosphere: "Journaling, intuition work, falling asleep with a question.",
+    duration: "3:45",
+    minutes: 4,
+    categories: ["tarot-sessions", "mystical-ambient"],
+    moods: ["misty", "calm", "intuitive"],
+  },
+  {
+    sku: "tarot-the-hermit-1",
+    youtubeId: "hLQJc959_jU",
+    title: "Tarot · The Hermit I",
+    description:
+      "Minimalist ambient for The Hermit: sparse felt piano, warm tape hiss and a soft analog pad, with long silences between the notes.",
+    atmosphere: "Solitary readings, reflection, quiet inner work.",
+    duration: "3:04",
+    minutes: 3,
+    categories: ["tarot-sessions"],
+    moods: ["solitary", "warm", "sparse"],
+  },
+  {
+    sku: "tarot-the-hermit-2",
+    youtubeId: "rPEUGfq1kjU",
+    title: "Tarot · The Hermit II",
+    description:
+      "The Hermit session continues: felt piano, tape warmth and slow pads for evenings spent with one honest question.",
+    atmosphere: "Journaling, shadow work, evening readings.",
+    duration: "3:15",
+    minutes: 3,
+    categories: ["tarot-sessions"],
+    moods: ["quiet", "reflective", "tender"],
+  },
+  {
+    sku: "aural-arcana-eclipse-1",
+    youtubeId: "B4iC2z7JNp8",
+    title: "Aural Arcana · Eclipse I",
+    description:
+      "Celestial dark ambient: a low bowed cello drone, granular shimmer, night crickets and slow swelling pads in deep space reverb.",
+    atmosphere: "Tarot sessions, deep focus, stargazing.",
+    duration: "3:18",
+    minutes: 3,
+    categories: ["otherworldly", "tarot-sessions"],
+    moods: ["celestial", "dark", "vast"],
+  },
+  {
+    sku: "aural-arcana-eclipse-2",
+    youtubeId: "t2BUdLJbWeo",
+    title: "Aural Arcana · Eclipse II",
+    description:
+      "The second half of the Eclipse session: cello drones, crickets at the edge of the night and a slow celestial swell.",
+    atmosphere: "Ritual, meditation, long spreads.",
+    duration: "3:19",
+    minutes: 3,
+    categories: ["otherworldly", "mystical-ambient"],
+    moods: ["nocturnal", "slow", "cosmic"],
+  },
+  {
+    sku: "aural-arcana-ritual-1",
+    youtubeId: "CYp3OgdLH1I",
+    title: "Aural Arcana · Ritual I",
+    description:
+      "Hypnotic ritual ambient: a distant frame drum heartbeat, bowed metal, smoky low drones and a deep hum, like an ancient candlelit temple.",
+    atmosphere: "Candle rituals, tarot, moving meditation.",
+    duration: "3:35",
+    minutes: 4,
+    categories: ["mystical-ambient", "tarot-sessions"],
+    moods: ["hypnotic", "ancient", "smoky"],
+  },
+  {
+    sku: "aural-arcana-ritual-2",
+    youtubeId: "CNThC06we44",
+    title: "Aural Arcana · Ritual II",
+    description:
+      "The temple session continues: frame drum pulse, bowed metal and incense-thick drones for candle rituals and long readings.",
+    atmosphere: "Candle rituals, spellwork, long readings.",
+    duration: "3:35",
+    minutes: 4,
+    categories: ["mystical-ambient"],
+    moods: ["steady", "incense", "ceremonial"],
+  },
+  {
     sku: "solastalgia-vol1",
     youtubeId: "7fbAjUR-jpI",
     title: "S O L A S T A L G I A, Vol. 1",

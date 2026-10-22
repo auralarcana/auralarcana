@@ -269,7 +269,7 @@ export const KARTY_WIELKIE: KartaTarota[] = [
       "Is my withdrawal a search or an escape?",
       "What have I learned in the dark that someone else now needs?",
     ],
-    musicSku: "bene-gesserit",
+    musicSku: "tarot-the-hermit-1",
   },
   {
     slug: "wheel-of-fortune",
@@ -476,7 +476,7 @@ export const KARTY_WIELKIE: KartaTarota[] = [
       "What is my intuition saying that my anxiety keeps shouting over?",
       "What decision should wait until the fog clears?",
     ],
-    musicSku: "solastalgia-vol1",
+    musicSku: "tarot-the-moon-1",
   },
   {
     slug: "the-sun",
