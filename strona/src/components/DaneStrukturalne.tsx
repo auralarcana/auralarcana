@@ -1,4 +1,4 @@
-import { DOMENA, FAQ, KANAL_YT, NAZWA, OPIS_KROTKI } from "@/data/strona";
+import { DOMENA, FAQ, NAZWA, OPIS_KROTKI, SOCIAL } from "@/data/strona";
 
 // Stałe daty: datePublished = pierwszy commit projektu, dateModified = czas builda.
 const DATA_PUBLIKACJI = "2026-10-18";
@@ -14,7 +14,7 @@ export function OrganizacjaISerwis() {
         name: NAZWA,
         url: `${DOMENA}/`,
         logo: `${DOMENA}/icon-v1.svg`,
-        sameAs: [KANAL_YT],
+        sameAs: SOCIAL.map((s) => s.url),
         description: OPIS_KROTKI,
       },
       {

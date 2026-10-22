@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { DISCLAIMER, KANAL_YT, NAZWA, ROK_STARTU } from "@/data/strona";
+import { DISCLAIMER, KANAL_YT, NAZWA, ROK_STARTU, SOCIAL } from "@/data/strona";
 import { DISCLAIMER_PL } from "@/data/pl/strona";
 
 const TEKSTY = {
@@ -21,6 +21,7 @@ const TEKSTY = {
     muzykaOpis: "Original soundscapes for readings, ritual and focus live on our YouTube channel.",
     kanal: "Aural Arcana on YouTube",
     prawa: "All soundscapes and card interpretations are original work.",
+    obserwuj: "Follow",
   },
   pl: {
     opis:
@@ -38,6 +39,7 @@ const TEKSTY = {
       "Autorskie pejzaże dźwiękowe do czytań, rytuału i skupienia mieszkają na naszym kanale YouTube.",
     kanal: "Aural Arcana na YouTube",
     prawa: "Wszystkie pejzaże dźwiękowe i interpretacje kart są pracą autorską.",
+    obserwuj: "Obserwuj",
   },
 } as const;
 
@@ -82,6 +84,21 @@ export default function Stopka() {
           >
             {t.kanal}
           </a>
+          <p className="etykieta mb-3 mt-8">{t.obserwuj}</p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            {SOCIAL.map((s) => (
+              <li key={s.nazwa}>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener me"
+                  className="text-przygaszony transition-colors hover:text-zloto-2"
+                >
+                  {s.nazwa}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
