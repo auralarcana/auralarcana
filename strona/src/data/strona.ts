@@ -9,6 +9,14 @@ export const KANAL_YT = "https://www.youtube.com/@aural_arcana";
 export const KANAL_YT_NAZWA = "Aural Arcana: Sonic Mysteries";
 export const KANAL_YT_ID = "UCJtwIOC7tYrDPOFnQVaCD8A";
 
+// Profile marki w social media (stopka + JSON-LD sameAs).
+export const SOCIAL: { nazwa: string; url: string }[] = [
+  { nazwa: "YouTube", url: KANAL_YT },
+  { nazwa: "Instagram", url: "https://www.instagram.com/auralarcana/" },
+  { nazwa: "TikTok", url: "https://www.tiktok.com/@auralarcana" },
+  { nazwa: "Pinterest", url: "https://www.pinterest.com/auralarcana/" },
+];
+
 export const ROK_STARTU = 2026;
 
 // Jedno źródło FAQ: strona główna, JSON-LD i public/ai/faq.json mają być z tym zgodne.
