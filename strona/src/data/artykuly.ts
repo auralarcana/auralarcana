@@ -166,6 +166,84 @@ export const ARTYKULY: Artykul[] = [
       },
     ],
   },
+  {
+    slug: "daily-tarot-card-practice",
+    title: "The Daily Tarot Card: How to Draw One Card a Day",
+    description:
+      "A simple daily tarot practice: how to draw a single card each morning, what to ask, how to read it in two minutes, and how a card journal turns the habit into real insight.",
+    date: "2026-10-27",
+    readingTime: "5 min",
+    blocks: [
+      {
+        t: "p",
+        text: "The single daily card is the smallest tarot practice there is, and one of the most useful. One card, one question, a few minutes before the day begins. It will not predict your Tuesday. What it does is give you one image to carry through the hours, and a reason to notice what happens around it.",
+      },
+      { t: "h2", text: "Why one card is enough" },
+      {
+        t: "p",
+        text: "Large spreads are rich, but they are also easy to over-read. A single card forces focus. You cannot hide in the relationships between positions or skip the uncomfortable card in the corner. There is only this symbol and your honest response to it. Over weeks, the daily card also teaches you the deck faster than any book: you meet each card in the context of real days.",
+      },
+      { t: "h2", text: "What to ask" },
+      {
+        t: "p",
+        text: "Keep the question open and about you. Good daily questions are: what do I need to pay attention to today, what energy can I bring into this day, or what is asking for my care right now. Avoid yes or no questions and questions about other people's choices. The card answers best when it is allowed to be a mirror rather than a verdict.",
+      },
+      { t: "h2", text: "How to read it in two minutes" },
+      {
+        t: "p",
+        text: "Look at the image before you look up the meaning. Name the first thing you notice: a color, a gesture, an object. Then read the card's keywords and its upright meaning, and ask where that theme already exists in your life. Write one sentence. That is the whole reading. If the card feels unclear, leave it unclear and see whether the evening explains it.",
+      },
+      { t: "h2", text: "Keep a card journal" },
+      {
+        t: "p",
+        text: "The real value appears over time. Note the date, the card and your one sentence. In the evening, add a line about what actually happened. After a month you will see patterns: cards that keep returning, suits that dominate certain weeks, themes you keep circling. That record is worth more than any single prediction.",
+      },
+      { t: "h2", text: "Let the music hold the moment" },
+      {
+        t: "p",
+        text: "A short ritual helps the habit stick. Put on a quiet piece of music, breathe for a minute, then draw. Our soundscapes are composed for exactly this kind of attention. You can also start with the Card of the Day on our home page, which shows the same card to everyone each day, and then draw your own reading when you want to go deeper.",
+      },
+    ],
+  },
+  {
+    slug: "love-tarot-reading",
+    title: "Love Tarot Reading: How to Ask About Relationships",
+    description:
+      "How to read tarot about love without fear or false promises: better questions to ask, a simple three-card relationship spread, and what the key love cards really mean.",
+    date: "2026-10-27",
+    readingTime: "6 min",
+    blocks: [
+      {
+        t: "p",
+        text: "Love is the subject people bring to tarot most often, and the one where readings go wrong most easily. Hope and fear both want a clear answer, and the cards are rarely a good source of guarantees. Read honestly, though, tarot is a remarkable tool for understanding what you feel, what you want and what you are avoiding.",
+      },
+      { t: "h2", text: "Ask about yourself, not about them" },
+      {
+        t: "p",
+        text: "Questions like does he love me or will she come back hand your power to the cards and to the other person. Turn the question toward what you can see and change: what do I need to understand about this relationship, what am I bringing into it, what would help me choose well. These questions produce readings you can actually use.",
+      },
+      { t: "h2", text: "A simple three-card love spread" },
+      {
+        t: "p",
+        text: "Draw three cards and read them as: you, the connection between you, and what the relationship needs now. The first card describes your state and expectations. The second shows the quality of the bond as it is today, not as you wish it were. The third points to the next honest step, which may be patience, a conversation, a boundary or a goodbye.",
+      },
+      { t: "h2", text: "The key love cards" },
+      {
+        t: "p",
+        text: "The Lovers is about choice and values as much as romance. The Two of Cups is mutual recognition, a meeting of equals. The Ten of Cups is shared emotional fulfilment. The Three of Swords names heartbreak plainly, and asks you to let grief move rather than harden. The Empress speaks of care and abundance, the Emperor of commitment and structure. Read each one against your real situation, not against a fairy tale.",
+      },
+      { t: "h2", text: "When the cards are hard" },
+      {
+        t: "p",
+        text: "A difficult card in a love reading is not a sentence. The Tower can mean an illusion that needed to fall, Death a phase that is ending so another can begin. Treat a hard card as information that arrived early, while you still have time to act on it.",
+      },
+      { t: "h2", text: "Try it now" },
+      {
+        t: "p",
+        text: "You can draw a free reading on Aura Arcana with any of our spreads, and look up every card's upright and reversed meaning in the card library. Choose a quiet moment, put on some music and ask the question you are actually afraid to ask. That is usually the one the cards answer best.",
+      },
+    ],
+  },
 ];
 
 export function znajdzArtykul(slug: string): Artykul | undefined {
