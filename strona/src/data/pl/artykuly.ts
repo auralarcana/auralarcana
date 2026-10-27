@@ -165,7 +165,87 @@ export const ARTYKULY_PL: ArtykulPl[] = [
       {
         t: "p",
         text: "Wszystko w naszej bibliotece muzyki powstało z myślą o takim użyciu i jest uporządkowane według przeznaczenia, nastroju i długości. Biblioteka mieszka na YouTube, za darmo, a nowe pejzaże dołączają, gdy tylko są gotowe.",
+        {
+    slug: "karta-dnia-tarot",
+    slugEn: "daily-tarot-card-practice",
+    title: "Karta dnia: jak ciągnąć jedną kartę tarota dziennie",
+    description:
+      "Prosta codzienna praktyka z tarotem: jak co rano wyciągnąć jedną kartę, o co pytać, jak odczytać ją w dwie minuty i jak dziennik kart zamienia nawyk w prawdziwy wgląd.",
+    date: "2026-10-27",
+    readingTime: "5 min",
+    blocks: [
+      {
+        t: "p",
+        text: "Karta dnia to najmniejsza praktyka tarota, jaka istnieje, i jedna z najbardziej użytecznych. Jedna karta, jedno pytanie, kilka minut przed początkiem dnia. Nie przepowie ci wtorku. Daje za to jeden obraz, który niesiesz przez kolejne godziny, i powód, żeby zauważyć, co dzieje się wokół niego.",
       },
+      { t: "h2", text: "Dlaczego jedna karta wystarczy" },
+      {
+        t: "p",
+        text: "Duże rozkłady są bogate, ale łatwo je przeczytać na siłę. Jedna karta wymusza skupienie. Nie da się schować w relacjach między pozycjami ani pominąć niewygodnej karty w rogu. Jest tylko ten symbol i twoja szczera reakcja na niego. Z tygodnia na tydzień karta dnia uczy też talii szybciej niż jakakolwiek książka, bo poznajesz każdą kartę w kontekście prawdziwych dni.",
+      },
+      { t: "h2", text: "O co pytać" },
+      {
+        t: "p",
+        text: "Pytanie powinno być otwarte i dotyczyć ciebie. Dobre pytania na co dzień to: na co mam dziś zwrócić uwagę, jaką energię mogę wnieść w ten dzień, co teraz potrzebuje mojej troski. Unikaj pytań typu tak lub nie oraz pytań o cudze decyzje. Karta odpowiada najlepiej wtedy, gdy może być lustrem, a nie wyrokiem.",
+      },
+      { t: "h2", text: "Jak odczytać ją w dwie minuty" },
+      {
+        t: "p",
+        text: "Najpierw spójrz na obraz, dopiero potem sprawdzaj znaczenie. Nazwij pierwszą rzecz, którą zauważasz: kolor, gest, przedmiot. Potem przeczytaj słowa kluczowe i znaczenie proste karty i zapytaj, gdzie ten motyw już jest w twoim życiu. Zapisz jedno zdanie. To całe czytanie. Jeśli karta wydaje się niejasna, zostaw ją taką i sprawdź, czy wieczór jej nie wyjaśni.",
+      },
+      { t: "h2", text: "Prowadź dziennik kart" },
+      {
+        t: "p",
+        text: "Prawdziwa wartość pojawia się z czasem. Zapisz datę, kartę i swoje jedno zdanie. Wieczorem dopisz linijkę o tym, co naprawdę się wydarzyło. Po miesiącu zobaczysz wzory: karty, które wracają, kolory dominujące w niektórych tygodniach, tematy, wokół których krążysz. Taki zapis jest wart więcej niż jakakolwiek pojedyncza przepowiednia.",
+      },
+      { t: "h2", text: "Niech muzyka przytrzyma chwilę" },
+      {
+        t: "p",
+        text: "Krótki rytuał pomaga utrzymać nawyk. Włącz spokojny utwór, oddychaj przez minutę, potem losuj. Nasze pejzaże dźwiękowe powstały właśnie dla takiej uwagi. Możesz też zacząć od Karty dnia na naszej stronie głównej, która każdego dnia pokazuje wszystkim tę samą kartę, a potem zrobić własne czytanie, gdy zechcesz pójść głębiej.",
+      },
+    ],
+  },
+  {
+    slug: "tarot-na-milosc",
+    slugEn: "love-tarot-reading",
+    title: "Tarot na miłość: jak pytać karty o związek",
+    description:
+      "Jak czytać tarota o miłości bez strachu i bez fałszywych obietnic: lepsze pytania, prosty rozkład trzech kart na związek i co naprawdę znaczą najważniejsze karty miłosne.",
+    date: "2026-10-27",
+    readingTime: "6 min",
+    blocks: [
+      {
+        t: "p",
+        text: "Miłość to temat, z którym ludzie najczęściej przychodzą do tarota, i ten, w którym czytanie najłatwiej się psuje. Nadzieja i lęk chcą jasnej odpowiedzi, a karty rzadko są dobrym źródłem gwarancji. Czytany uczciwie tarot jest jednak świetnym narzędziem, by zrozumieć, co czujesz, czego chcesz i czego unikasz.",
+      },
+      { t: "h2", text: "Pytaj o siebie, nie o drugą osobę" },
+      {
+        t: "p",
+        text: "Pytania w rodzaju czy on mnie kocha albo czy ona wróci oddają twoją moc kartom i drugiej osobie. Odwróć pytanie w stronę tego, co możesz zobaczyć i zmienić: co mam zrozumieć w tej relacji, co do niej wnoszę, co pomoże mi dobrze wybrać. Takie pytania dają czytania, z których naprawdę da się skorzystać.",
+      },
+      { t: "h2", text: "Prosty rozkład trzech kart na związek" },
+      {
+        t: "p",
+        text: "Wyciągnij trzy karty i czytaj je jako: ty, więź między wami i to, czego związek potrzebuje teraz. Pierwsza karta opisuje twój stan i oczekiwania. Druga pokazuje jakość więzi taką, jaka jest dziś, a nie taką, jakiej byś chciała lub chciał. Trzecia wskazuje następny uczciwy krok: cierpliwość, rozmowę, granicę albo pożegnanie.",
+      },
+      { t: "h2", text: "Najważniejsze karty miłosne" },
+      {
+        t: "p",
+        text: "Kochankowie mówią o wyborze i wartościach tak samo jak o romansie. Dwójka Kielichów to wzajemne rozpoznanie, spotkanie równych sobie. Dziesiątka Kielichów oznacza wspólne emocjonalne spełnienie. Trójka Mieczy wprost nazywa złamane serce i prosi, by żal płynął, a nie twardniał. Cesarzowa mówi o trosce i obfitości, Cesarz o zobowiązaniu i strukturze. Czytaj każdą z nich na tle prawdziwej sytuacji, nie bajki.",
+      },
+      { t: "h2", text: "Gdy karty są trudne" },
+      {
+        t: "p",
+        text: "Trudna karta w czytaniu o miłości nie jest wyrokiem. Wieża może oznaczać złudzenie, które musiało upaść, Śmierć etap, który się kończy, żeby mógł zacząć się następny. Traktuj trudną kartę jak informację, która przyszła wcześnie, kiedy jeszcze masz czas, by coś z nią zrobić.",
+      },
+      { t: "h2", text: "Spróbuj teraz" },
+      {
+        t: "p",
+        text: "Na Aura Arcana zrobisz darmowe czytanie w dowolnym rozkładzie, a w bibliotece kart sprawdzisz znaczenie proste i odwrócone każdej z 78 kart. Wybierz spokojną chwilę, włącz muzykę i zadaj pytanie, którego naprawdę boisz się zadać. Zwykle to na nie karty odpowiadają najlepiej.",
+      },
+    ],
+  },
+},
     ],
   },
 ];
