@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp -f public/.htaccess out/.htaccess 2>/dev/null || true",
+    "build": "next build && (cp -f public/.htaccess out/.htaccess 2>/dev/null || true) && find out/pl -name '*.html' -exec sed -i 's/<html lang=\"en\"/<html lang=\"pl\"/' {} +",
     "start": "next start"
   },
   "dependencies": {
