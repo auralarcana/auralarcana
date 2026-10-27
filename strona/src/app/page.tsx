@@ -4,6 +4,8 @@ import { KartaAwers } from "@/components/KartaGrafika";
 import OdtwarzaczYT from "@/components/OdtwarzaczYT";
 import { FaqJsonLd } from "@/components/DaneStrukturalne";
 import { znajdzKarte } from "@/data/karty";
+import { KARTY } from "@/data/karty";
+import KartaDnia from "@/components/KartaDnia";
 import { SPREADY } from "@/data/spready";
 import { UTWORY } from "@/data/muzyka";
 import { ARTYKULY } from "@/data/artykuly";
@@ -22,6 +24,9 @@ export default function StronaGlowna() {
     .filter((k) => k !== undefined);
   const wyrozniane = UTWORY.filter((u) => u.featured);
   const artykuly = ARTYKULY.slice(0, 3);
+  const kartyDnia = KARTY.map(
+    ({ description, upright, reversed, questions, keywordsReversed, ...reszta }) => reszta,
+  );
 
   return (
     <>
@@ -75,6 +80,9 @@ export default function StronaGlowna() {
           </div>
         </div>
       </section>
+
+      {/* KARTA DNIA */}
+      <KartaDnia karty={kartyDnia} jezyk="en" />
 
       {/* SPREADY */}
       <section className="mx-auto max-w-6xl px-4 py-16">
