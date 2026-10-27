@@ -165,6 +165,9 @@ export const ARTYKULY_PL: ArtykulPl[] = [
       {
         t: "p",
         text: "Wszystko w naszej bibliotece muzyki powstało z myślą o takim użyciu i jest uporządkowane według przeznaczenia, nastroju i długości. Biblioteka mieszka na YouTube, za darmo, a nowe pejzaże dołączają, gdy tylko są gotowe.",
+      },
+    ],
+  },
         {
     slug: "karta-dnia-tarot",
     slugEn: "daily-tarot-card-practice",
@@ -243,9 +246,6 @@ export const ARTYKULY_PL: ArtykulPl[] = [
         t: "p",
         text: "Na Aura Arcana zrobisz darmowe czytanie w dowolnym rozkładzie, a w bibliotece kart sprawdzisz znaczenie proste i odwrócone każdej z 78 kart. Wybierz spokojną chwilę, włącz muzykę i zadaj pytanie, którego naprawdę boisz się zadać. Zwykle to na nie karty odpowiadają najlepiej.",
       },
-    ],
-  },
-},
     ],
   },
 ];
