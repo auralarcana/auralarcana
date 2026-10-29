@@ -1,6 +1,6 @@
 # ai.txt for auralarcana.com
 
-site: Aura Arcana
+site: Aural Arcana
 url: https://auralarcana.com/
 language: en (Polish version under /pl/)
 updated: 2026-10-19
