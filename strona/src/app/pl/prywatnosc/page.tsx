@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Prywatność",
   description:
-    "Jak Aura Arcana obchodzi się z twoimi danymi: czytania działają w całości w przeglądarce i nigdy nie są zapisywane, analityka jest bezcookiesowa, a odtwarzacze YouTube ładują się dopiero po wciśnięciu play.",
+    "Jak Aural Arcana obchodzi się z twoimi danymi: czytania działają w całości w przeglądarce i nigdy nie są zapisywane, analityka jest bezcookiesowa, a odtwarzacze YouTube ładują się dopiero po wciśnięciu play.",
   alternates: {
     canonical: "/pl/prywatnosc/",
     languages: { en: "/privacy/", pl: "/pl/prywatnosc/", "x-default": "/privacy/" },
