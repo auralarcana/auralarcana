@@ -3,9 +3,9 @@ import Link from "next/link";
 import { KANAL_YT } from "@/data/strona";
 
 export const metadata: Metadata = {
-  title: "O projekcie Aura Arcana",
+  title: "O projekcie Aural Arcana",
   description:
-    "Aura Arcana łączy nadprzyrodzony tarot z autorską muzyką atmosferyczną: darmowe czytania, znaczenia wszystkich 78 kart i pejzaże dźwiękowe skomponowane do wróżb, rytuału i skupienia.",
+    "Aural Arcana łączy nadprzyrodzony tarot z autorską muzyką atmosferyczną: darmowe czytania, znaczenia wszystkich 78 kart i pejzaże dźwiękowe skomponowane do wróżb, rytuału i skupienia.",
   alternates: {
     canonical: "/pl/o-projekcie/",
     languages: { en: "/about/", pl: "/pl/o-projekcie/", "x-default": "/about/" },
@@ -17,12 +17,12 @@ export default function StronaONasPl() {
     <div className="mx-auto max-w-3xl px-4 py-14">
       <div className="mb-12 text-center">
         <p className="etykieta mb-3">Projekt</p>
-        <h1 className="text-4xl">O projekcie Aura Arcana</h1>
+        <h1 className="text-4xl">O projekcie Aural Arcana</h1>
       </div>
 
       <article className="tekst-artykulu space-y-5">
         <p>
-          Aura Arcana zaczęła się od prostej obserwacji: czytanie tarota tylko w połowie składa się
+          Aural Arcana zaczęła się od prostej obserwacji: czytanie tarota tylko w połowie składa się
           z kart. Druga połowa to atmosfera. Ten sam rozkład, położony między mailami w biurowym
           świetle, mówi mniej niż przy uprzątniętym stole, w półmroku, z właściwym dźwiękiem w
           powietrzu. Większość stron o tarocie dostarcza karty. Prawie żadna nie dostarcza
