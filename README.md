@@ -1,4 +1,4 @@
-# Aura Arcana (auralarcana.com)
+# Aural Arcana (auralarcana.com)
 
 Strona tarota nadprzyrodzonego połączona z kanałem YouTube **Aural Arcana: Sonic Mysteries**: darmowe interaktywne czytania z pełnej talii 78 kart, znaczenia wszystkich kart, przewodnik po praktyce i biblioteka autorskiej muzyki do czytań, rytuałów i skupienia.
 
