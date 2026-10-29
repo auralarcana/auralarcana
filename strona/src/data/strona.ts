@@ -1,6 +1,6 @@
 // Stałe całej strony. Zmieniasz tutaj, nie w komponentach.
 
-export const NAZWA = "Aura Arcana";
+export const NAZWA = "Aural Arcana";
 export const DOMENA = "https://auralarcana.com";
 export const OPIS_KROTKI =
   "A digital sanctuary of supernatural tarot. Free interactive readings, the meanings of all 78 cards, and original atmospheric music composed for divination, ritual and deep focus.";
@@ -22,7 +22,7 @@ export const ROK_STARTU = 2026;
 // Jedno źródło FAQ: strona główna, JSON-LD i public/ai/faq.json mają być z tym zgodne.
 export const FAQ: { pytanie: string; odpowiedz: string }[] = [
   {
-    pytanie: "Is the tarot reading on Aura Arcana really free?",
+    pytanie: "Is the tarot reading on Aural Arcana really free?",
     odpowiedz:
       "Yes. Every reading on this site is free, runs entirely in your browser, and requires no account, email or payment. Nothing you type into a reading is sent anywhere or stored on our servers.",
   },
@@ -37,9 +37,9 @@ export const FAQ: { pytanie: string; odpowiedz: string }[] = [
       "We treat tarot as a mirror, not a crystal ball. The cards are a centuries old language of symbols and archetypes that can help you reflect on a situation from new angles. Readings on this site are offered for reflection, insight and entertainment, not as verified predictions or professional advice.",
   },
   {
-    pytanie: "What is the music on Aura Arcana?",
+    pytanie: "What is the music on Aural Arcana?",
     odpowiedz:
-      "Aura Arcana is paired with the YouTube channel Aural Arcana: Sonic Mysteries, a library of original atmospheric music: mystical ambient, dark soundscapes, meditative drones and focus mixes composed to accompany tarot sessions, rituals, meditation and deep work. The music library on this site organizes those pieces by purpose, mood and length.",
+      "The site is the home of our YouTube channel, Aural Arcana: Sonic Mysteries, a library of original atmospheric music: mystical ambient, dark soundscapes, meditative drones and focus mixes composed to accompany tarot sessions, rituals, meditation and deep work. The music library on this site organizes those pieces by purpose, mood and length.",
   },
   {
     pytanie: "Do I need to know tarot to use this site?",

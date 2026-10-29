@@ -240,7 +240,7 @@ export const ARTYKULY: Artykul[] = [
       { t: "h2", text: "Try it now" },
       {
         t: "p",
-        text: "You can draw a free reading on Aura Arcana with any of our spreads, and look up every card's upright and reversed meaning in the card library. Choose a quiet moment, put on some music and ask the question you are actually afraid to ask. That is usually the one the cards answer best.",
+        text: "You can draw a free reading on Aural Arcana with any of our spreads, and look up every card's upright and reversed meaning in the card library. Choose a quiet moment, put on some music and ask the question you are actually afraid to ask. That is usually the one the cards answer best.",
       },
     ],
   },
