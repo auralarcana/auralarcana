@@ -3,9 +3,9 @@ import Link from "next/link";
 import { KANAL_YT } from "@/data/strona";
 
 export const metadata: Metadata = {
-  title: "About Aura Arcana",
+  title: "About Aural Arcana",
   description:
-    "Aura Arcana joins supernatural tarot with original atmospheric music: free readings, the meanings of all 78 cards, and soundscapes composed for divination, ritual and focus.",
+    "Aural Arcana joins supernatural tarot with original atmospheric music: free readings, the meanings of all 78 cards, and soundscapes composed for divination, ritual and focus.",
   alternates: {
     canonical: "/about/",
     languages: { en: "/about/", pl: "/pl/o-projekcie/", "x-default": "/about/" },
@@ -17,12 +17,12 @@ export default function StronaONas() {
     <div className="mx-auto max-w-3xl px-4 py-14">
       <div className="mb-12 text-center">
         <p className="etykieta mb-3">The project</p>
-        <h1 className="text-4xl">About Aura Arcana</h1>
+        <h1 className="text-4xl">About Aural Arcana</h1>
       </div>
 
       <article className="tekst-artykulu space-y-5">
         <p>
-          Aura Arcana began with a simple observation: a tarot reading is only half made of cards.
+          Aural Arcana began with a simple observation: a tarot reading is only half made of cards.
           The other half is atmosphere. The same spread, laid out between emails under office
           light, says less than it does at a cleared table, in low light, with the right sound in
           the air. Most tarot websites supply the cards. Almost none supply the air.
