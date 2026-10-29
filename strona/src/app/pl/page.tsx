@@ -13,7 +13,7 @@ import { FAQ_PL } from "@/data/pl/strona";
 import { KANAL_YT, NAZWA } from "@/data/strona";
 
 export const metadata: Metadata = {
-  title: { absolute: "Aura Arcana: darmowy tarot online i muzyka do wróżb" },
+  title: { absolute: "Aural Arcana: darmowy tarot online i muzyka do wróżb" },
   alternates: {
     canonical: "/pl/",
     languages: { en: "/", pl: "/pl/", "x-default": "/" },
