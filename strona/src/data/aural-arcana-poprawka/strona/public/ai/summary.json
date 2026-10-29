@@ -1,0 +1,45 @@
+{
+  "name": "Aural Arcana",
+  "url": "https://auralarcana.com/",
+  "language": [
+    "en",
+    "pl"
+  ],
+  "dateModified": "2026-10-19",
+  "summary": "Aural Arcana is a free supernatural tarot website paired with the YouTube music channel Aural Arcana: Sonic Mysteries. It offers interactive tarot readings in the browser from a full 78 card deck, interpretations of every tarot card, a tarot practice guide, and a library of original atmospheric music for tarot readings, divination, meditation, ritual and focus.",
+  "offerings": [
+    {
+      "name": "Free online tarot reading",
+      "url": "https://auralarcana.com/tarot/",
+      "description": "Four spreads: a one card daily reading, Past Present Future, Situation Challenge Direction, and a five card Compass. Full 78 card deck, optional reversed cards, cryptographic shuffle, no account and no storage of readings.",
+      "price": "free"
+    },
+    {
+      "name": "Tarot card meanings",
+      "url": "https://auralarcana.com/cards/",
+      "description": "All 78 cards, each with its own page: symbolism, upright and reversed meanings, keywords and reflective questions.",
+      "price": "free"
+    },
+    {
+      "name": "Music library",
+      "url": "https://auralarcana.com/music/",
+      "description": "Original soundscapes from the YouTube channel, organized by purpose, mood and length: music for tarot sessions, mystical ambient, otherworldly dark ambient, focus and study, epic cinematic, and short sonic mystery video essays.",
+      "price": "free"
+    },
+    {
+      "name": "Tarot guide",
+      "url": "https://auralarcana.com/guide/",
+      "description": "Articles on approaching a reading, the Major and Minor Arcana, choosing spreads, and the role of music and atmosphere in divination.",
+      "price": "free"
+    }
+  ],
+  "youtube": {
+    "channel": "Aural Arcana: Sonic Mysteries",
+    "url": "https://www.youtube.com/@aural_arcana"
+  },
+  "disclaimer": "Tarot readings on this site are symbolic interpretations offered for reflection, personal exploration and entertainment. They are not predictions of the future and no outcome is guaranteed.",
+  "polishVersion": {
+    "url": "https://auralarcana.com/pl/",
+    "description": "Pelna polska wersja serwisu: darmowe czytanie tarota online, znaczenia wszystkich 78 kart (np. /pl/karty/glupiec/), biblioteka muzyki i przewodnik po tarocie."
+  }
+}
