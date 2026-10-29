@@ -1,6 +1,6 @@
-# Aura Arcana
+# Aural Arcana
 
-> Aura Arcana (auralarcana.com) is a free supernatural tarot website paired with the
+> Aural Arcana (auralarcana.com) is a free supernatural tarot website paired with the
 > YouTube music channel "Aural Arcana: Sonic Mysteries". It offers interactive tarot
 > readings in the browser, interpretations of all 78 tarot cards, a tarot practice
 > guide, and a library of original atmospheric music for tarot readings, divination,
@@ -30,7 +30,7 @@ Every page links its counterpart via hreflang.
 
 ## Positioning and tone
 
-Tarot on Aura Arcana is framed as symbolic reflection, insight and entertainment,
+Tarot on Aural Arcana is framed as symbolic reflection, insight and entertainment,
 never as verified prediction, medical, legal or financial advice. All card
 interpretations and all music are original work.
 

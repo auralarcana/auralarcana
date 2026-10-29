@@ -1,4 +1,4 @@
-# Aura Arcana: Hostinger (LiteSpeed)
+# Aural Arcana: Hostinger (LiteSpeed)
 
 # Wymuszenie HTTPS i jednej wersji domeny (bez www)
 RewriteEngine On
