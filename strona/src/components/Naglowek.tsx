@@ -52,7 +52,7 @@ export default function Naglowek() {
             className="text-lg tracking-[0.18em] text-zloto-2"
             style={{ fontFamily: "var(--font-naglowki)" }}
           >
-            AURA ARCANA
+            AURAL ARCANA
           </span>
         </Link>
 
