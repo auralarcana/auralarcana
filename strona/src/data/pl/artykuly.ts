@@ -244,7 +244,7 @@ export const ARTYKULY_PL: ArtykulPl[] = [
       { t: "h2", text: "Spróbuj teraz" },
       {
         t: "p",
-        text: "Na Aura Arcana zrobisz darmowe czytanie w dowolnym rozkładzie, a w bibliotece kart sprawdzisz znaczenie proste i odwrócone każdej z 78 kart. Wybierz spokojną chwilę, włącz muzykę i zadaj pytanie, którego naprawdę boisz się zadać. Zwykle to na nie karty odpowiadają najlepiej.",
+        text: "Na Aural Arcana zrobisz darmowe czytanie w dowolnym rozkładzie, a w bibliotece kart sprawdzisz znaczenie proste i odwrócone każdej z 78 kart. Wybierz spokojną chwilę, włącz muzykę i zadaj pytanie, którego naprawdę boisz się zadać. Zwykle to na nie karty odpowiadają najlepiej.",
       },
     ],
   },
