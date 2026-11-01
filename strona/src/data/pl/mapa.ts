@@ -12,6 +12,7 @@ export const SEKCJE_EN_PL: Record<string, string> = {
   "/guide/": "/pl/przewodnik/",
   "/about/": "/pl/o-projekcie/",
   "/privacy/": "/pl/prywatnosc/",
+  "/journal/": "/pl/dziennik/",
 };
 
 const KARTY_EN_NA_PL = new Map(KARTY_PL.map((k) => [k.slugEn!, k.slug]));

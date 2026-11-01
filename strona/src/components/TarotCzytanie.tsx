@@ -12,6 +12,11 @@ import { potasuj, syntezaOdczytu, type Dobycie, type JezykOdczytu } from "@/lib/
 import { KartaAwers, KartaRewers } from "@/components/KartaGrafika";
 import { DISCLAIMER } from "@/data/strona";
 import { DISCLAIMER_PL } from "@/data/pl/strona";
+import dynamic from "next/dynamic";
+
+// Inner Circle (Supabase) doczytywany dopiero przy wyniku rozkładu: darmowe czytanie zostaje lekkie.
+const CzatWyroczni = dynamic(() => import("@/components/CzatWyroczni"), { ssr: false });
+const ZapiszDoDziennika = dynamic(() => import("@/components/ZapiszDoDziennika"), { ssr: false });
 
 type Faza = "wybor-spreadu" | "skupienie" | "wybor-kart" | "odczyt";
 
@@ -43,7 +48,7 @@ const TEKSTY = {
     zacznij: "Begin this reading →",
     trzymajPytanie: "Hold your question",
     skupienie:
-      "Take one slow breath. Let the question form in its own words: not the answer you hope for, just the matter itself. You may write it below to sharpen it. It stays on this page and is never sent or stored anywhere.",
+      "Take one slow breath. Let the question form in its own words: not the answer you hope for, just the matter itself. You may write it below to sharpen it. It stays on this page, unless you choose to keep it in your journal or ask the reader about it.",
     etykietaPytania: "Your question or intention (optional)",
     placeholder: "What should I understand about...",
     reversy: "Include reversed cards (a deeper, more demanding reading)",
@@ -77,7 +82,7 @@ const TEKSTY = {
     zacznij: "Zacznij to czytanie →",
     trzymajPytanie: "Zatrzymaj pytanie",
     skupienie:
-      "Weź jeden powolny oddech. Pozwól pytaniu ułożyć się własnymi słowami: nie odpowiedzi, na którą liczysz, tylko samej sprawie. Możesz zapisać je poniżej, żeby je wyostrzyć. Zostaje na tej stronie i nigdy nie jest nigdzie wysyłane ani zapisywane.",
+      "Weź jeden powolny oddech. Pozwól pytaniu ułożyć się własnymi słowami: nie odpowiedzi, na którą liczysz, tylko samej sprawie. Możesz zapisać je poniżej, żeby je wyostrzyć. Zostaje na tej stronie, chyba że zdecydujesz się zachować je w dzienniku albo zapytać o nie Wyrocznię.",
     etykietaPytania: "Twoje pytanie lub intencja (opcjonalnie)",
     placeholder: "Co powinnam zrozumieć o...",
     reversy: "Uwzględnij karty odwrócone (głębsze, bardziej wymagające czytanie)",
@@ -398,6 +403,15 @@ export default function TarotCzytanie({ jezyk = "en" }: { jezyk?: JezykOdczytu }
                 ))}
               </div>
             </section>
+          )}
+
+          {/* Inner Circle: zapis do Arcana Journal i czat Wyroczni (dla subskrybentek),
+              zwiastun z przyciskiem subskrypcji dla pozostałych. */}
+          {odkryte === dobycia.length && (
+            <>
+              <ZapiszDoDziennika jezyk={jezyk} spread={spread} dobycia={dobycia} intencja={intencja} />
+              <CzatWyroczni jezyk={jezyk} spread={spread} dobycia={dobycia} intencja={intencja} />
+            </>
           )}
 
           {odkryte === dobycia.length && (

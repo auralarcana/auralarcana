@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMENA}/guide/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.7 },
     { url: `${DOMENA}/about/`, lastModified: teraz, changeFrequency: "yearly", priority: 0.4 },
     { url: `${DOMENA}/privacy/`, lastModified: teraz, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${DOMENA}/journal/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.5 },
   ];
 
   const karty: MetadataRoute.Sitemap = KARTY.map((k) => ({
@@ -42,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMENA}/pl/przewodnik/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.6 },
     { url: `${DOMENA}/pl/o-projekcie/`, lastModified: teraz, changeFrequency: "yearly", priority: 0.3 },
     { url: `${DOMENA}/pl/prywatnosc/`, lastModified: teraz, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${DOMENA}/pl/dziennik/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.4 },
   ];
 
   const kartyPl: MetadataRoute.Sitemap = KARTY_PL.map((k) => ({
