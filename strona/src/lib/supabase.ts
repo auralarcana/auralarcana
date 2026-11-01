@@ -6,10 +6,10 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 export const SUPABASE_URL =
-  process.env.NEXT_PUBLIC_SUPABASE_URL ?? "https://wlhxuzzxxqqncisfdcax.supabase.co";
+  process.env.NEXT_PUBLIC_SUPABASE_URL ?? "https://emvvqzdfzkmgbkicgqfw.supabase.co";
 
 export const SUPABASE_KLUCZ_PUBLICZNY =
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "sb_publishable_ujXEVAeD0RbGgWPKP0WJZA_ElfJlhLV";
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? "sb_publishable_b5SH3_5LXn1kQCzSjfO_zA_6u-VMv_Z";
 
 /** Adres Edge Function czatu Wyroczni. */
 export const URL_CZATU_WYROCZNI = `${SUPABASE_URL}/functions/v1/reader-chat`;

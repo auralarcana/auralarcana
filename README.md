@@ -100,7 +100,7 @@ Decyzja właścicielki: BEZ plików do pobrania (ludzie słuchają z telefonów,
 
 ## Inner Circle: konto, Arcana Journal i czat Wyroczni (Claude)
 
-Pierwsza płatna funkcja. Działa na projekcie Supabase **Aural Arcana** (`wlhxuzzxxqqncisfdcax`, region eu-central-1, plan darmowy).
+Pierwsza płatna funkcja. Działa na projekcie Supabase **Aural Arcana** (`emvvqzdfzkmgbkicgqfw`, region eu-north-1, osobne konto Supabase z organizacją „Aural Arcana”, plan darmowy).
 
 ### Co jest w środku
 
@@ -115,7 +115,7 @@ Pierwsza płatna funkcja. Działa na projekcie Supabase **Aural Arcana** (`wlhxu
 ### Sekrety i konfiguracja (robi właścicielka, raz)
 
 1. **Klucz Anthropic**: Supabase → Project Settings → Edge Functions → Secrets → `ANTHROPIC_API_KEY` (z console.anthropic.com). Opcjonalnie `ANTHROPIC_MODEL` (domyślnie `claude-haiku-4-5`). Klucza nigdy nie wpisuj do repo ani do zmiennych `NEXT_PUBLIC_*`.
-2. **Adresy logowania**: Supabase → Authentication → URL Configuration: Site URL `https://auralarcana.com`, Redirect URLs: `https://auralarcana.com/journal/`, `https://auralarcana.com/pl/dziennik/`, `http://localhost:3000/**`. Bez tego link z maila nie zaloguje.
+2. **Adresy logowania** (USTAWIONE): Supabase → Authentication → URL Configuration: Site URL `https://auralarcana.com`, Redirect URLs: `https://auralarcana.com/journal/`, `https://auralarcana.com/pl/dziennik/`, `https://auralarcana.com/**`, `http://localhost:3000/**`. Bez tego link z maila wraca na localhost.
 3. **Maile**: domyślny nadawca Supabase ma limit kilku maili na godzinę. Przy większym ruchu podepnij własne SMTP (Authentication → SMTP Settings), np. Resend.
 4. **Kto jest subskrybentem**: dopóki nie ma Polara, flagę ustawiasz ręcznie w SQL Editor:
    ```sql
@@ -128,8 +128,8 @@ Pierwsza płatna funkcja. Działa na projekcie Supabase **Aural Arcana** (`wlhxu
 
 ### Wdrażanie backendu
 
-- Migracje: `supabase/migrations/*.sql`. Na projekcie są już zastosowane (przez MCP). Kolejne: `supabase db push` albo SQL Editor.
-- Edge Function: `supabase functions deploy reader-chat` (CLI zalogowane na konto Malwiny). Katalog funkcji zawiera `biblioteka.json`, generowany skryptem `npm run eksport-biblioteki` w `strona/`.
+- Migracje: `supabase/migrations/*.sql`. Na projekcie są już zastosowane (SQL Editor). Kolejne: `supabase db push` albo SQL Editor.
+- Edge Function: `supabase functions deploy reader-chat` (CLI zalogowane na to konto) albo panel: Edge Functions → reader-chat → Code (wklej `index.ts` i `biblioteka.json`). Ustawienie „Verify JWT with legacy secret” ma być WYŁĄCZONE: funkcja sama sprawdza sesję użytkownika. Katalog funkcji zawiera `biblioteka.json`, generowany skryptem `npm run eksport-biblioteki` w `strona/`.
 - Front nie wymaga sekretów: adres projektu i klucz publishable są w `src/lib/supabase.ts` (do nadpisania przez `strona/.env.example`).
 
 ### Prompt Wyroczni
