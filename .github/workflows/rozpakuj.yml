@@ -1,0 +1,30 @@
+# Rozpakowanie paczki zmian wgranej przez GitHub (bundle.tgz) na gałęziach innych niż main.
+# Na main robi to krok w deploy.yml. Dzięki temu zmiany da się wgrać przez przeglądarkę
+# na gałąź roboczą i otworzyć pull request, bez dostępu git z zewnątrz.
+name: Rozpakuj paczke zmian
+on:
+  push:
+    branches-ignore: [main]
+    paths: [bundle.tgz]
+permissions:
+  contents: write
+jobs:
+  rozpakuj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rozpakowanie paczki zmian
+        run: |
+          if [ -f bundle.tgz ]; then
+            tar xzf bundle.tgz
+            if [ -f bundle-usun.txt ]; then
+              while read -r f; do [ -n "$f" ] && git rm -rq --ignore-unmatch -- "$f"; rm -rf -- "$f"; done < bundle-usun.txt
+              rm -f bundle-usun.txt
+            fi
+            git rm -q bundle.tgz
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Rozpakowanie paczki zmian [skip ci]" || true
+            git push
+          fi
