@@ -26,14 +26,32 @@ export default function StronaPrywatnosciPl() {
             Czytania tarota na tej stronie działają w całości w twojej przeglądarce. Karty są
             tasowane na twoim urządzeniu, a wszystko, co wpiszesz jako pytanie lub intencję, nigdy
             nie opuszcza strony: nie jest przesyłane, logowane ani nigdzie zapisywane. Gdy
-            zamykasz kartę przeglądarki, czytanie znika.
+            zamykasz kartę przeglądarki, czytanie znika. Jedyny wyjątek to Inner Circle opisany niżej,
+            do którego dołączasz z własnego wyboru.
           </p>
         </section>
 
         <section>
-          <h2 className="mb-3 text-2xl">Bez kont, bez cookies śledzących</h2>
+          <h2 className="mb-3 text-2xl">Inner Circle: konto, dziennik i Wyrocznia</h2>
+          {/* Do przeglądu przez właścicielkę: opis przetwarzania w strefie klienta. */}
           <p>
-            Ta strona nie ma kont użytkowników i nie ustawia cookies reklamowych ani śledzących.
+            Jeśli założysz konto, przechowujemy Twój adres e-mail oraz czytania, które sama
+            zapiszesz w Arcana Journal (rozkład, karty, pytanie i notatki) na Supabase, w centrum
+            danych w Unii Europejskiej, zabezpieczone tak, że tylko Ty możesz czytać swoje strony.
+            Gdy rozmawiasz z Wyrocznią, karty na stole, Twoje pytanie, Twoje wiadomości i pięć
+            ostatnich wpisów z dziennika są wysyłane do API Claude firmy Anthropic, aby wygenerować
+            odpowiedź; Anthropic nie używa danych z API do trenowania modeli. Zapisujemy log każdej
+            wymiany (czas, Twoje konto, długość w tokenach), żeby pilnować miesięcznego limitu i
+            utrzymywać usługę, ale nie treść rozmowy. Strony dziennika możesz usunąć w każdej
+            chwili, a na Twoją prośbę usuniemy całe konto.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-3 text-2xl">Bez cookies śledzących</h2>
+          <p>
+            Poza opcjonalnym kontem Inner Circle ta strona niczego o tobie nie przechowuje i nie
+            ustawia cookies reklamowych ani śledzących.
             Ruch mierzymy za pomocą Cloudflare Web Analytics: bez cookies i wyłącznie zbiorczo
             (odsłony, źródła wejść, kraj, typ urządzenia), bez tworzenia profilu ciebie jako osoby.
             Korzystamy też z Google Search Console, które pokazuje, jak strona wypada w wynikach

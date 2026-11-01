@@ -26,14 +26,32 @@ export default function StronaPrywatnosci() {
             Tarot readings on this site run entirely in your browser. The cards are shuffled on
             your device, and anything you type as a question or intention never leaves the page:
             it is not transmitted, logged or stored anywhere. When you close the tab, the reading
-            is gone.
+            is gone. The one exception is the Inner Circle, described below, which you choose to
+            join.
           </p>
         </section>
 
         <section>
-          <h2 className="mb-3 text-2xl">No accounts, no tracking cookies</h2>
+          <h2 className="mb-3 text-2xl">The Inner Circle: account, journal and the reader</h2>
+          {/* Do przeglądu przez właścicielkę: opis przetwarzania w strefie klienta. */}
           <p>
-            This site has no user accounts and sets no advertising or tracking cookies. We measure
+            If you create an account, we store your email address and the readings you choose to
+            save to your Arcana Journal (spread, cards, question and notes) on Supabase, in a data
+            centre in the European Union, protected so that only you can read your pages. When you
+            talk with the reader, the cards on the table, your question, your messages and your
+            last five journal entries are sent to Anthropic&rsquo;s Claude API to generate the reply;
+            Anthropic does not use API data to train its models. We keep a log of each
+            conversation turn (time, your account, length in tokens) to enforce the monthly limit
+            and to run the service, but not the text of the conversation itself. You can delete
+            journal pages at any time, and you can ask us to delete your account entirely.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="mb-3 text-2xl">No tracking cookies</h2>
+          <p>
+            Apart from the optional Inner Circle account, this site stores nothing about you and
+            sets no advertising or tracking cookies. We measure
             traffic with Cloudflare Web Analytics, which is cookieless and aggregate (page views,
             referrers, country, device type) and builds no profile of you as an individual. We
             also use Google Search Console, which reports how the site appears in Google search

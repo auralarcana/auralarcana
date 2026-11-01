@@ -12,6 +12,7 @@ const POZYCJE_EN = [
   { href: "/music/", label: "Music" },
   { href: "/guide/", label: "Guide" },
   { href: "/about/", label: "About" },
+  { href: "/journal/", label: "Journal" },
 ];
 
 const POZYCJE_PL = [
@@ -20,6 +21,7 @@ const POZYCJE_PL = [
   { href: "/pl/muzyka/", label: "Muzyka" },
   { href: "/pl/przewodnik/", label: "Przewodnik" },
   { href: "/pl/o-projekcie/", label: "O projekcie" },
+  { href: "/pl/dziennik/", label: "Dziennik" },
 ];
 
 export default function Naglowek() {
