@@ -1,4 +1,5 @@
--- Polar: subskrypcje opłacone zanim osoba założyła konto na stronie.
+-- Subskrypcje opłacone zanim osoba założyła konto na stronie (pierwotnie pod Polar,
+-- od migracji 20261102120000_stripe.sql pod Stripe).
 -- Webhook zapisuje tu e-mail i termin; trigger przy rejestracji przenosi to do profiles.
 
 create table public.pending_subscriptions (

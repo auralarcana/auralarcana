@@ -1,9 +1,15 @@
 // Teksty czatu Wyroczni, Arcana Journal i konta (EN). Polska wersja: pl/wyrocznia.ts.
 // Zasada strony: treść w src/data, nie w komponentach.
 
-/** Dokąd prowadzi przycisk "Subscribe". Gdy ruszy Polar, wstaw tu adres checkoutu. */
+/** Dokąd prowadzi przycisk "Subscribe": Stripe Payment Link planu miesięcznego.
+ *  Dopóki to kotwica #inner-circle, strona pokazuje zapowiedź zamiast płatności. */
 export const LINK_SUBSKRYPCJI = "/journal/#inner-circle";
 export const LINK_SUBSKRYPCJI_PL = "/pl/dziennik/#inner-circle";
+/** Stripe Payment Link planu rocznego (pusty = bez planu rocznego). */
+export const LINK_SUBSKRYPCJI_ROCZNA = "";
+/** Ceny do wyświetlenia przy przycisku (zgodne z produktem w Stripe). */
+export const CENA_MIESIECZNA = "6.99 USD";
+export const CENA_ROCZNA = "49 USD";
 
 export interface TekstyWyroczni {
   // Panel czatu
@@ -55,6 +61,8 @@ export interface TekstyWyroczni {
   innerCircleTresc: string;
   innerCirclePunkty: string[];
   innerCircleWkrotce: string;
+  cenaMiesiecznie: (cena: string) => string;
+  cenaRocznie: (cena: string) => string;
   dziekujemyEtykieta: string;
   dziekujemyTresc: string;
   wpisyTytul: string;
@@ -133,6 +141,8 @@ export const TEKSTY_WYROCZNI: TekstyWyroczni = {
   ],
   innerCircleWkrotce:
     "Membership opens soon. Sign in now and your journal will be waiting when the doors open.",
+  cenaMiesiecznie: (cena) => `${cena} a month, cancel any time`,
+  cenaRocznie: (cena) => `or ${cena} a year, two months free`,
   dziekujemyEtykieta: "Welcome to the Inner Circle",
   dziekujemyTresc:
     "Thank you. Your membership is tied to the email you used at checkout: sign in with that same address below (or refresh if you are already signed in) and the journal and the reader will open.",

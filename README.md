@@ -85,17 +85,17 @@ UWAGA: `mirror --delete` kasuje z `public_html` wszystko, czego nie ma w buildzi
 
 ## Model sprzedaży (ustalony kierunek)
 
-Stan: konto, Arcana Journal, czat Wyroczni i płatności Polar DZIAŁAJĄ (sekcja „Inner Circle” niżej); brak jeszcze playlist premium.
+Stan: konto, Arcana Journal, czat Wyroczni i płatności Stripe DZIAŁAJĄ (sekcja „Inner Circle” niżej); brak jeszcze playlist premium.
 
 Decyzja właścicielki: BEZ plików do pobrania (ludzie słuchają z telefonów, duże pliki odpadają). Zamiast tego JEDNA subskrypcja, która otwiera wszystko naraz:
 
 - **Za darmo (silnik SEO, zostaje na zawsze):** czytania, znaczenia 78 kart, przewodnik, muzyka z YouTube na stronie.
-- **Subskrypcja "Inner Circle" (Polar, jeden plan):**
+- **Subskrypcja "Inner Circle" (Stripe, plan miesięczny lub roczny):**
   - Arcana Journal: dziennik czytań zapisywany na koncie (historia dobrań, notatki, wzorce w czasie),
   - playlisty premium streamowane na stronie (strefa klienta, bez pobierania),
   - dłuższe/ekskluzywne wersje pejzaży i wcześniejszy dostęp do nowych,
   - głębsze rozkłady dostępne tylko dla subskrybentów.
-- Technicznie: Polar (płatności i bramka subskrypcji) + Supabase Auth (konto, dziennik) + streaming audio przez odtwarzacz na stronie (pliki za podpisanymi URL-ami, nie do pobrania wprost).
+- Technicznie: Stripe (płatności i subskrypcje; Polar odrzucony przez regulamin) + Supabase Auth (konto, dziennik) + streaming audio przez odtwarzacz na stronie (pliki za podpisanymi URL-ami, nie do pobrania wprost).
 - Zasada: zero martwych przycisków; sekcja płatna pojawia się na stronie dopiero, gdy naprawdę działa.
 
 ## Inner Circle: konto, Arcana Journal i czat Wyroczni (Claude)
@@ -117,20 +117,22 @@ Pierwsza płatna funkcja. Działa na projekcie Supabase **Aural Arcana** (`emvvq
 1. **Klucz Anthropic**: Supabase → Project Settings → Edge Functions → Secrets → `ANTHROPIC_API_KEY` (z console.anthropic.com). Opcjonalnie `ANTHROPIC_MODEL` (domyślnie `claude-haiku-4-5`). Klucza nigdy nie wpisuj do repo ani do zmiennych `NEXT_PUBLIC_*`.
 2. **Adresy logowania** (USTAWIONE): Supabase → Authentication → URL Configuration: Site URL `https://auralarcana.com`, Redirect URLs: `https://auralarcana.com/journal/`, `https://auralarcana.com/pl/dziennik/`, `https://auralarcana.com/**`, `http://localhost:3000/**`. Bez tego link z maila wraca na localhost.
 3. **Maile**: domyślny nadawca Supabase ma limit kilku maili na godzinę. Przy większym ruchu podepnij własne SMTP (Authentication → SMTP Settings), np. Resend.
-4. **Kto jest subskrybentem**: dopóki nie ma Polara, flagę ustawiasz ręcznie w SQL Editor:
+4. **Kto jest subskrybentem**: Stripe nadaje flagę przez webhook; ręcznie (zaproszenia, testy) w SQL Editor:
    ```sql
    update public.profiles set is_subscriber = true where email = 'adres@przyklad.pl';
    -- z terminem ważności:
    update public.profiles set is_subscriber = true, subscriber_until = now() + interval '1 month' where email = '...';
    ```
-   Polar robi to samo automatycznie przez webhook (sekcja „Płatności: Polar” niżej); SQL zostaje do ręcznych wyjątków (zaproszenia, testy).
-5. **Przycisk „Dołącz do Inner Circle”**: stała `LINK_SUBSKRYPCJI` / `LINK_SUBSKRYPCJI_PL` w `src/data/wyrocznia.ts`. Gdy jest to adres `https://...` (checkout Polar), przycisk prowadzi do płatności, a zalogowanej osobie dokleja `customer_email`; gdy to kotwica `#inner-circle`, strona pokazuje zapowiedź (zero martwych przycisków). Logika w `src/lib/subskrypcja.ts`.
+   Stripe robi to samo automatycznie przez webhook (sekcja „Płatności: Stripe” niżej); SQL zostaje do ręcznych wyjątków (zaproszenia, testy).
+5. **Przycisk „Dołącz do Inner Circle”**: stała `LINK_SUBSKRYPCJI` / `LINK_SUBSKRYPCJI_PL` w `src/data/wyrocznia.ts`. Gdy jest to adres `https://...` (Stripe Payment Link), przycisk prowadzi do płatności, a zalogowanej osobie dokleja `customer_email`; gdy to kotwica `#inner-circle`, strona pokazuje zapowiedź (zero martwych przycisków). Logika w `src/lib/subskrypcja.ts`.
 
-### Płatności: Polar
+### Płatności: Stripe
 
-- Produkt **Aural Arcana · Inner Circle** na koncie Polar Malwiny (to samo co Loupa, Auto-mate, Calm Waves): 6,99 USD miesięcznie, 49 USD rocznie. Success URL checkoutu: `https://auralarcana.com/journal/?paid=1` (PL: `/pl/dziennik/?paid=1`), strona pokazuje wtedy prośbę o zalogowanie tym samym e-mailem.
-- **Webhook**: Edge Function `polar-webhook` (`supabase/functions/polar-webhook/index.ts`), adres `https://emvvqzdfzkmgbkicgqfw.supabase.co/functions/v1/polar-webhook`, w Polar włączone zdarzenia `subscription.*`. Weryfikuje podpis Standard Webhooks sekretem `POLAR_WEBHOOK_SECRET` (Supabase → Edge Functions → Secrets). „Verify JWT” tej funkcji musi być WYŁĄCZONE.
-- Logika: status `active`/`trialing` = subskrypcja (do `ends_at` albo `current_period_end` + 3 dni zapasu); każdy inny status = brak. Dopasowanie po e-mailu klienta z Polar do `profiles.email`. Jeśli osoba zapłaciła, zanim założyła konto, wpis czeka w `pending_subscriptions`, a trigger `handle_new_user()` nadaje subskrypcję przy pierwszym logowaniu. Ważne: e-mail przy płatności i przy logowaniu musi być ten sam.
+- Polar odpadł: jego regulamin zakazuje „usług związanych z pseudonauką (jasnowidzenie, horoskopy, wróżenie)”. Stripe nie wymienia tarota dla kont z Polski (zakaz tylko w Japonii, Meksyku, Tajlandii). Przy Stripe sprzedawcą jest właścicielka: VAT od usług cyfrowych dla konsumentów z UE (OSS) rozlicza sama; Stripe Tax może naliczać stawki.
+- Produkt w Stripe: **Aural Arcana · Inner Circle**, dwie ceny: 6,99 USD/miesiąc i 49 USD/rok, każda z własnym Payment Linkiem. Linki wpisuje się w `src/data/wyrocznia.ts` (`LINK_SUBSKRYPCJI`, `LINK_SUBSKRYPCJI_PL`, `LINK_SUBSKRYPCJI_ROCZNA`), a kwoty do wyświetlenia w `CENA_MIESIECZNA` / `CENA_ROCZNA`. Zalogowanej osobie front dokleja `prefilled_email`. Po płatności Stripe wraca na `https://auralarcana.com/journal/?paid=1` (PL: `/pl/dziennik/?paid=1`), strona prosi o zalogowanie tym samym e-mailem.
+- **Webhook**: Edge Function `stripe-webhook` (`supabase/functions/stripe-webhook/index.ts`), adres `https://emvvqzdfzkmgbkicgqfw.supabase.co/functions/v1/stripe-webhook`. W Stripe → Developers → Webhooks endpoint ze zdarzeniami `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated`, `customer.subscription.deleted`. Sekret podpisu (`whsec_...`) trafia do Supabase → Edge Functions → Secrets jako `STRIPE_WEBHOOK_SECRET`. „Verify JWT” tej funkcji musi być WYŁĄCZONE.
+- Logika: status `active`/`trialing` = subskrypcja (do końca okresu + 3 dni zapasu, albo do `cancel_at`); `deleted` lub inny status = brak. Dopasowanie po `stripe_customer_id`, w razie braku po e-mailu z checkoutu. Jeśli osoba zapłaciła, zanim założyła konto, wpis czeka w `pending_subscriptions`, a trigger `handle_new_user()` nadaje subskrypcję przy pierwszym logowaniu. Ważne: e-mail przy płatności i przy logowaniu musi być ten sam.
+- Zaproszenia bez płatności (testerki, znajome): `insert into public.pending_subscriptions (email) values ('adres') on conflict do nothing;` albo `update public.profiles set is_subscriber = true where email = 'adres';`, gdy konto już jest.
 
 ### Wdrażanie backendu
 
@@ -144,6 +146,6 @@ W `index.ts`, funkcja `promptSystemowy()`: dwa warianty (EN i PL), tradycja Ride
 
 ## Rozwój (architektura jest na to gotowa)
 
-- Strefa klienta: GOTOWA (konto, dziennik, czat, płatności Polar z webhookiem); do dodania: playlisty premium
+- Strefa klienta: GOTOWA (konto, dziennik, czat, płatności Stripe z webhookiem); do dodania: playlisty premium
 - Kolejne talie i spready: nowe pliki w `src/data/`, silnik w `lib/tarot.ts` jest od tego niezależny
 - Wersja polska: GOTOWA (pełne `/pl/` z hreflang); kolejne języki analogicznie przez `src/data/<jezyk>/`

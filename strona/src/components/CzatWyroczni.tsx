@@ -10,8 +10,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Spread } from "@/data/spready";
 import type { Dobycie, JezykOdczytu } from "@/lib/tarot";
 import { UTWORY } from "@/data/muzyka";
-import { TEKSTY_WYROCZNI } from "@/data/wyrocznia";
-import { linkDoSubskrypcji } from "@/lib/subskrypcja";
+import { CENA_MIESIECZNA, TEKSTY_WYROCZNI } from "@/data/wyrocznia";
+import { linkDoSubskrypcji, platnosciDzialaja } from "@/lib/subskrypcja";
 import { TEKSTY_WYROCZNI_PL } from "@/data/pl/wyrocznia";
 import { useKonto } from "@/lib/konto";
 import { supabase, URL_CZATU_WYROCZNI, type StatusWyroczni } from "@/lib/supabase";
@@ -185,6 +185,9 @@ export default function CzatWyroczni({ jezyk, spread, dobycia, intencja }: Props
           >
             {t.subskrybuj}
           </a>
+          {platnosciDzialaja(jezyk) && (
+            <span className="text-sm text-przygaszony">{t.cenaMiesiecznie(CENA_MIESIECZNA)}</span>
+          )}
           {!konto.sesja && (
             <Link
               href={linkDziennika}

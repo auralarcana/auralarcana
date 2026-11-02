@@ -6,8 +6,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import type { JezykOdczytu } from "@/lib/tarot";
-import { TEKSTY_WYROCZNI } from "@/data/wyrocznia";
-import { linkDoSubskrypcji, platnosciDzialaja } from "@/lib/subskrypcja";
+import { CENA_MIESIECZNA, CENA_ROCZNA, TEKSTY_WYROCZNI } from "@/data/wyrocznia";
+import { linkDoSubskrypcji, linkDoSubskrypcjiRocznej, platnosciDzialaja } from "@/lib/subskrypcja";
 import { TEKSTY_WYROCZNI_PL } from "@/data/pl/wyrocznia";
 import { useKonto } from "@/lib/konto";
 import { supabase } from "@/lib/supabase";
@@ -164,12 +164,28 @@ export default function Dziennik({ jezyk }: { jezyk: JezykOdczytu }) {
           {!platnosciDzialaja(jezyk) ? (
             <p className="text-sm italic text-fiolet">{t.innerCircleWkrotce}</p>
           ) : (
-            <a
-              href={linkDoSubskrypcji(jezyk, konto.uzytkownik?.email)}
-              className="poswiata inline-block border border-zloto px-8 py-3 tracking-widest text-zloto-2 transition-colors hover:bg-zloto hover:text-noc"
-            >
-              {t.subskrybuj}
-            </a>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a
+                href={linkDoSubskrypcji(jezyk, konto.uzytkownik?.email)}
+                className="poswiata inline-block border border-zloto px-8 py-3 tracking-widest text-zloto-2 transition-colors hover:bg-zloto hover:text-noc"
+              >
+                {t.subskrybuj}
+              </a>
+              <p className="text-sm text-przygaszony">
+                {t.cenaMiesiecznie(CENA_MIESIECZNA)}
+                {linkDoSubskrypcjiRocznej(konto.uzytkownik?.email) && (
+                  <>
+                    <br />
+                    <a
+                      href={linkDoSubskrypcjiRocznej(konto.uzytkownik?.email)}
+                      className="underline underline-offset-4 hover:text-kosc"
+                    >
+                      {t.cenaRocznie(CENA_ROCZNA)}
+                    </a>
+                  </>
+                )}
+              </p>
+            </div>
           )}
         </section>
       )}
