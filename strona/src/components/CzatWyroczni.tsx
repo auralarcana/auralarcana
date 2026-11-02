@@ -10,7 +10,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Spread } from "@/data/spready";
 import type { Dobycie, JezykOdczytu } from "@/lib/tarot";
 import { UTWORY } from "@/data/muzyka";
-import { LINK_SUBSKRYPCJI, LINK_SUBSKRYPCJI_PL, TEKSTY_WYROCZNI } from "@/data/wyrocznia";
+import { TEKSTY_WYROCZNI } from "@/data/wyrocznia";
+import { linkDoSubskrypcji } from "@/lib/subskrypcja";
 import { TEKSTY_WYROCZNI_PL } from "@/data/pl/wyrocznia";
 import { useKonto } from "@/lib/konto";
 import { supabase, URL_CZATU_WYROCZNI, type StatusWyroczni } from "@/lib/supabase";
@@ -62,7 +63,6 @@ function formatujDate(iso: string | undefined, jezyk: JezykOdczytu): string {
 
 export default function CzatWyroczni({ jezyk, spread, dobycia, intencja }: Props) {
   const t = jezyk === "pl" ? TEKSTY_WYROCZNI_PL : TEKSTY_WYROCZNI;
-  const linkSubskrypcji = jezyk === "pl" ? LINK_SUBSKRYPCJI_PL : LINK_SUBSKRYPCJI;
   const linkDziennika = jezyk === "pl" ? "/pl/dziennik/" : "/journal/";
   const linkMuzyki = jezyk === "pl" ? "/pl/muzyka/" : "/music/";
 
@@ -179,12 +179,12 @@ export default function CzatWyroczni({ jezyk, spread, dobycia, intencja }: Props
         </ul>
         {konto.sesja && <p className="mb-5 text-sm italic text-fiolet">{t.juzSubskrybujesz}</p>}
         <div className="flex flex-wrap items-center gap-5">
-          <Link
-            href={linkSubskrypcji}
+          <a
+            href={linkDoSubskrypcji(jezyk, konto.uzytkownik?.email)}
             className="poswiata inline-block border border-zloto px-8 py-3 tracking-widest text-zloto-2 transition-colors hover:bg-zloto hover:text-noc"
           >
             {t.subskrybuj}
-          </Link>
+          </a>
           {!konto.sesja && (
             <Link
               href={linkDziennika}

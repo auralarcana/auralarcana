@@ -6,7 +6,8 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import type { JezykOdczytu } from "@/lib/tarot";
-import { LINK_SUBSKRYPCJI, LINK_SUBSKRYPCJI_PL, TEKSTY_WYROCZNI } from "@/data/wyrocznia";
+import { TEKSTY_WYROCZNI } from "@/data/wyrocznia";
+import { linkDoSubskrypcji, platnosciDzialaja } from "@/lib/subskrypcja";
 import { TEKSTY_WYROCZNI_PL } from "@/data/pl/wyrocznia";
 import { useKonto } from "@/lib/konto";
 import { supabase } from "@/lib/supabase";
@@ -23,7 +24,6 @@ interface Wpis {
 
 export default function Dziennik({ jezyk }: { jezyk: JezykOdczytu }) {
   const t = jezyk === "pl" ? TEKSTY_WYROCZNI_PL : TEKSTY_WYROCZNI;
-  const linkSubskrypcji = jezyk === "pl" ? LINK_SUBSKRYPCJI_PL : LINK_SUBSKRYPCJI;
   const linkKart = jezyk === "pl" ? "/pl/karty/" : "/cards/";
   const linkTarota = jezyk === "pl" ? "/pl/tarot/" : "/tarot/";
   const konto = useKonto();
@@ -66,8 +66,22 @@ export default function Dziennik({ jezyk }: { jezyk: JezykOdczytu }) {
 
   const subskrybent = Boolean(konto.status?.subscriber);
 
+  // Powrót z checkoutu Polar (?paid=1): subskrypcja nadaje się po e-mailu, więc
+  // prosimy o zalogowanie tym samym adresem, jeśli jeszcze nie ma sesji.
+  const [poPlatnosci, setPoPlatnosci] = useState(false);
+  useEffect(() => {
+    setPoPlatnosci(new URLSearchParams(window.location.search).get("paid") === "1");
+  }, []);
+
   return (
     <div className="mx-auto max-w-3xl">
+      {poPlatnosci && !subskrybent && (
+        <section className="mb-8 border border-zloto/40 bg-noc-3 p-6 sm:p-8" role="status">
+          <p className="etykieta mb-2">{t.dziekujemyEtykieta}</p>
+          <p className="text-kosc">{t.dziekujemyTresc}</p>
+        </section>
+      )}
+
       {/* Konto */}
       <section className="mb-12 border border-linia bg-noc-2 p-6 sm:p-8">
         {konto.wczytywanie ? (
@@ -146,12 +160,12 @@ export default function Dziennik({ jezyk }: { jezyk: JezykOdczytu }) {
               </li>
             ))}
           </ul>
-          {/* Dopóki LINK_SUBSKRYPCJI wskazuje na tę sekcję, nie ma czego kupić: pokazujemy zapowiedź. */}
-          {linkSubskrypcji.includes("#inner-circle") ? (
+          {/* Dopóki LINK_SUBSKRYPCJI nie prowadzi do checkoutu, nie ma czego kupić: pokazujemy zapowiedź. */}
+          {!platnosciDzialaja(jezyk) ? (
             <p className="text-sm italic text-fiolet">{t.innerCircleWkrotce}</p>
           ) : (
             <a
-              href={linkSubskrypcji}
+              href={linkDoSubskrypcji(jezyk, konto.uzytkownik?.email)}
               className="poswiata inline-block border border-zloto px-8 py-3 tracking-widest text-zloto-2 transition-colors hover:bg-zloto hover:text-noc"
             >
               {t.subskrybuj}

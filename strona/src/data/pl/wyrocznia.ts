@@ -68,6 +68,9 @@ export const TEKSTY_WYROCZNI_PL: TekstyWyroczni = {
   ],
   innerCircleWkrotce:
     "Członkostwo rusza wkrótce. Zaloguj się już teraz, a Twój dziennik będzie czekał, gdy otworzą się drzwi.",
+  dziekujemyEtykieta: "Witaj w Inner Circle",
+  dziekujemyTresc:
+    "Dziękujemy. Członkostwo jest przypisane do e-maila podanego przy płatności: zaloguj się poniżej tym samym adresem (albo odśwież stronę, jeśli już jesteś zalogowana), a dziennik i Wyrocznia się otworzą.",
   wpisyTytul: "Twoje strony",
   brakWpisow: "Jeszcze nie ma stron. Dokończ czytanie i zapisz je w dzienniku.",
   usun: "usuń",

@@ -55,6 +55,8 @@ export interface TekstyWyroczni {
   innerCircleTresc: string;
   innerCirclePunkty: string[];
   innerCircleWkrotce: string;
+  dziekujemyEtykieta: string;
+  dziekujemyTresc: string;
   wpisyTytul: string;
   brakWpisow: string;
   usun: string;
@@ -131,6 +133,9 @@ export const TEKSTY_WYROCZNI: TekstyWyroczni = {
   ],
   innerCircleWkrotce:
     "Membership opens soon. Sign in now and your journal will be waiting when the doors open.",
+  dziekujemyEtykieta: "Welcome to the Inner Circle",
+  dziekujemyTresc:
+    "Thank you. Your membership is tied to the email you used at checkout: sign in with that same address below (or refresh if you are already signed in) and the journal and the reader will open.",
   wpisyTytul: "Your pages",
   brakWpisow: "No pages yet. Finish a reading and save it to your journal.",
   usun: "remove",

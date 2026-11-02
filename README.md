@@ -85,7 +85,7 @@ UWAGA: `mirror --delete` kasuje z `public_html` wszystko, czego nie ma w buildzi
 
 ## Model sprzedaży (ustalony kierunek)
 
-Stan: konto, Arcana Journal i czat Wyroczni DZIAŁAJĄ (sekcja „Inner Circle” wyżej); brak jeszcze płatności (Polar) i playlist premium.
+Stan: konto, Arcana Journal, czat Wyroczni i płatności Polar DZIAŁAJĄ (sekcja „Inner Circle” niżej); brak jeszcze playlist premium.
 
 Decyzja właścicielki: BEZ plików do pobrania (ludzie słuchają z telefonów, duże pliki odpadają). Zamiast tego JEDNA subskrypcja, która otwiera wszystko naraz:
 
@@ -123,8 +123,14 @@ Pierwsza płatna funkcja. Działa na projekcie Supabase **Aural Arcana** (`emvvq
    -- z terminem ważności:
    update public.profiles set is_subscriber = true, subscriber_until = now() + interval '1 month' where email = '...';
    ```
-   Gdy ruszy Polar, webhook ma robić dokładnie to samo (osobna Edge Function, do dodania).
-5. **Przycisk „Dołącz do Inner Circle”**: stała `LINK_SUBSKRYPCJI` / `LINK_SUBSKRYPCJI_PL` w `src/data/wyrocznia.ts`. Teraz prowadzi do sekcji z zapowiedzią na stronie dziennika (zero martwych przycisków). Gdy ruszy Polar, wstaw tam adres checkoutu: przycisk zacznie prowadzić do płatności, a zapowiedź zniknie sama.
+   Polar robi to samo automatycznie przez webhook (sekcja „Płatności: Polar” niżej); SQL zostaje do ręcznych wyjątków (zaproszenia, testy).
+5. **Przycisk „Dołącz do Inner Circle”**: stała `LINK_SUBSKRYPCJI` / `LINK_SUBSKRYPCJI_PL` w `src/data/wyrocznia.ts`. Gdy jest to adres `https://...` (checkout Polar), przycisk prowadzi do płatności, a zalogowanej osobie dokleja `customer_email`; gdy to kotwica `#inner-circle`, strona pokazuje zapowiedź (zero martwych przycisków). Logika w `src/lib/subskrypcja.ts`.
+
+### Płatności: Polar
+
+- Produkt **Aural Arcana · Inner Circle** na koncie Polar Malwiny (to samo co Loupa, Auto-mate, Calm Waves): 6,99 USD miesięcznie, 49 USD rocznie. Success URL checkoutu: `https://auralarcana.com/journal/?paid=1` (PL: `/pl/dziennik/?paid=1`), strona pokazuje wtedy prośbę o zalogowanie tym samym e-mailem.
+- **Webhook**: Edge Function `polar-webhook` (`supabase/functions/polar-webhook/index.ts`), adres `https://emvvqzdfzkmgbkicgqfw.supabase.co/functions/v1/polar-webhook`, w Polar włączone zdarzenia `subscription.*`. Weryfikuje podpis Standard Webhooks sekretem `POLAR_WEBHOOK_SECRET` (Supabase → Edge Functions → Secrets). „Verify JWT” tej funkcji musi być WYŁĄCZONE.
+- Logika: status `active`/`trialing` = subskrypcja (do `ends_at` albo `current_period_end` + 3 dni zapasu); każdy inny status = brak. Dopasowanie po e-mailu klienta z Polar do `profiles.email`. Jeśli osoba zapłaciła, zanim założyła konto, wpis czeka w `pending_subscriptions`, a trigger `handle_new_user()` nadaje subskrypcję przy pierwszym logowaniu. Ważne: e-mail przy płatności i przy logowaniu musi być ten sam.
 
 ### Wdrażanie backendu
 
@@ -138,6 +144,6 @@ W `index.ts`, funkcja `promptSystemowy()`: dwa warianty (EN i PL), tradycja Ride
 
 ## Rozwój (architektura jest na to gotowa)
 
-- Strefa klienta: GOTOWA w zakresie konta, dziennika i czatu (Supabase Auth w przeglądarce, sekrety tylko w Edge Functions); do dodania: webhook Polar i playlisty premium
+- Strefa klienta: GOTOWA (konto, dziennik, czat, płatności Polar z webhookiem); do dodania: playlisty premium
 - Kolejne talie i spready: nowe pliki w `src/data/`, silnik w `lib/tarot.ts` jest od tego niezależny
 - Wersja polska: GOTOWA (pełne `/pl/` z hreflang); kolejne języki analogicznie przez `src/data/<jezyk>/`
