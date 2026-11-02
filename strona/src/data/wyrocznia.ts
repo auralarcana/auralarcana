@@ -3,10 +3,10 @@
 
 /** Dokąd prowadzi przycisk "Subscribe": Stripe Payment Link planu miesięcznego.
  *  Dopóki to kotwica #inner-circle, strona pokazuje zapowiedź zamiast płatności. */
-export const LINK_SUBSKRYPCJI = "/journal/#inner-circle";
-export const LINK_SUBSKRYPCJI_PL = "/pl/dziennik/#inner-circle";
+export const LINK_SUBSKRYPCJI = "https://buy.stripe.com/aFacN71GR7yN0ZxckY43S03";
+export const LINK_SUBSKRYPCJI_PL = "https://buy.stripe.com/aFacN71GR7yN0ZxckY43S03?locale=pl";
 /** Stripe Payment Link planu rocznego (pusty = bez planu rocznego). */
-export const LINK_SUBSKRYPCJI_ROCZNA = "";
+export const LINK_SUBSKRYPCJI_ROCZNA = "https://buy.stripe.com/aFa9AV85f2etaA7acQ43S04";
 /** Ceny do wyświetlenia przy przycisku (zgodne z produktem w Stripe). */
 export const CENA_MIESIECZNA = "6.99 USD";
 export const CENA_ROCZNA = "49 USD";
