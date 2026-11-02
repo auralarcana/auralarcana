@@ -8,8 +8,10 @@ export default function OdtwarzaczYT(props: {
   youtubeId: string;
   title: string;
   duration?: string;
+  /** Od razu iframe z autoplay (gdy użytkowniczka już kliknęła, np. pejzaż w czytaniu). */
+  odRazu?: boolean;
 }) {
-  const [gra, setGra] = useState(false);
+  const [gra, setGra] = useState(!!props.odRazu);
 
   if (gra) {
     return (

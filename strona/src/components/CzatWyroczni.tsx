@@ -242,6 +242,8 @@ export default function CzatWyroczni({ jezyk, spread, dobycia, intencja }: Props
                   <span aria-hidden="true">♪ </span>
                   <Link
                     href={utwor.kotwica ? `${linkMuzyki}#${utwor.kotwica}` : linkMuzyki}
+                    target="_blank"
+                    rel="noopener"
                     className="text-zloto-2 underline underline-offset-4 hover:text-zloto"
                     title={t.utworLink}
                   >

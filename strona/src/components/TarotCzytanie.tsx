@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { KARTY, type KartaTarota } from "@/data/karty";
 import { KARTY_PL } from "@/data/pl/karty";
 import { SPREADY, type Spread } from "@/data/spready";
@@ -13,6 +13,7 @@ import { KartaAwers, KartaRewers } from "@/components/KartaGrafika";
 import { DISCLAIMER } from "@/data/strona";
 import { DISCLAIMER_PL } from "@/data/pl/strona";
 import dynamic from "next/dynamic";
+import OdtwarzaczYT from "@/components/OdtwarzaczYT";
 
 // Inner Circle (Supabase) doczytywany dopiero przy wyniku rozkładu: darmowe czytanie zostaje lekkie.
 const CzatWyroczni = dynamic(() => import("@/components/CzatWyroczni"), { ssr: false });
@@ -69,6 +70,7 @@ const TEKSTY = {
     dopiskaRewers: " · reversed",
     pelneZnaczenie: (nazwa: string) => `Full meaning of ${nazwa}`,
     pejzaz: (tytul: string) => `Soundscape for this card: ${tytul}`,
+    ukryjPejzaz: "hide the soundscape",
     razem: "How the cards speak together",
     noweCzytanie: "NEW READING",
     przegladajMuzyke: "browse music for your next session",
@@ -103,6 +105,7 @@ const TEKSTY = {
     dopiskaRewers: " · odwrócona",
     pelneZnaczenie: (nazwa: string) => `Pełne znaczenie karty ${nazwa}`,
     pejzaz: (tytul: string) => `Pejzaż dźwiękowy do tej karty: ${tytul}`,
+    ukryjPejzaz: "ukryj pejzaż dźwiękowy",
     razem: "Jak karty mówią razem",
     noweCzytanie: "NOWE CZYTANIE",
     przegladajMuzyke: "przeglądaj muzykę na następną sesję",
@@ -126,6 +129,69 @@ export default function TarotCzytanie({ jezyk = "en" }: { jezyk?: JezykOdczytu }
   const [wybrane, setWybrane] = useState<number[]>([]);
   const [dobycia, setDobycia] = useState<Dobycie[]>([]);
   const [odkryte, setOdkryte] = useState<number>(0);
+  // Indeks karty, pod którą gra pejzaż dźwiękowy (odtwarzacz w samym czytaniu, bez opuszczania strony).
+  const [graPejzaz, setGraPejzaz] = useState<number | null>(null);
+  const [przywrocono, setPrzywrocono] = useState(false);
+  const kluczZapisu = `aa-czytanie-${jezyk}`;
+
+  // Przywrócenie czytania po powrocie na stronę (np. przyciskiem Wstecz).
+  useEffect(() => {
+    try {
+      const surowe = sessionStorage.getItem(kluczZapisu);
+      if (surowe) {
+        const z = JSON.parse(surowe) as {
+          spread: string;
+          intencja: string;
+          odkryte: number;
+          dobycia: { slug: string; reversed: boolean; positionIndex: number }[];
+        };
+        const s = ROZKLADY.find((r) => r.slug === z.spread);
+        const dob = z.dobycia
+          .map((d) => {
+            const karta = TALIA.find((k) => k.slug === d.slug);
+            return karta ? { karta, reversed: d.reversed, positionIndex: d.positionIndex } : null;
+          })
+          .filter((d): d is Dobycie => d !== null);
+        if (s && dob.length === s.positions.length) {
+          setSpread(s);
+          setIntencja(z.intencja || "");
+          setDobycia(dob);
+          setOdkryte(Math.min(z.odkryte, dob.length));
+          setFaza("odczyt");
+        }
+      }
+    } catch {
+      /* brak dostępu do sessionStorage: zwykły start */
+    }
+    setPrzywrocono(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Zapis bieżącego czytania na czas sesji karty przeglądarki.
+  useEffect(() => {
+    if (!przywrocono) return;
+    try {
+      if (faza === "odczyt" && spread && dobycia.length) {
+        sessionStorage.setItem(
+          kluczZapisu,
+          JSON.stringify({
+            spread: spread.slug,
+            intencja,
+            odkryte,
+            dobycia: dobycia.map((d) => ({
+              slug: d.karta.slug,
+              reversed: d.reversed,
+              positionIndex: d.positionIndex,
+            })),
+          }),
+        );
+      } else if (faza === "wybor-spreadu") {
+        sessionStorage.removeItem(kluczZapisu);
+      }
+    } catch {
+      /* ignoruj */
+    }
+  }, [przywrocono, faza, spread, dobycia, odkryte, intencja, kluczZapisu]);
 
   const synteza = useMemo(
     () => (spread && dobycia.length > 1 ? syntezaOdczytu(dobycia, spread, jezyk) : []),
@@ -166,6 +232,7 @@ export default function TarotCzytanie({ jezyk = "en" }: { jezyk?: JezykOdczytu }
     setWybrane([]);
     setOdkryte(0);
     setIntencja("");
+    setGraPejzaz(null);
   }
 
   /* ----------------------------- FAZA 1: spread ----------------------------- */
@@ -376,19 +443,29 @@ export default function TarotCzytanie({ jezyk = "en" }: { jezyk?: JezykOdczytu }
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
                   <Link
                     href={`${t.linkKarty}${d.karta.slug}/`}
+                    target="_blank"
+                    rel="noopener"
                     className="text-zloto-2 underline underline-offset-4 hover:text-zloto"
                   >
                     {t.pelneZnaczenie(d.karta.name)}
                   </Link>
                   {muzyka && (
-                    <Link
-                      href={t.linkMuzyka}
-                      className="text-przygaszony underline underline-offset-4 hover:text-kosc"
+                    <button
+                      type="button"
+                      onClick={() => setGraPejzaz(graPejzaz === i ? null : i)}
+                      aria-expanded={graPejzaz === i}
+                      className="text-left text-przygaszony underline underline-offset-4 hover:text-kosc"
                     >
-                      {t.pejzaz(muzyka.title)}
-                    </Link>
+                      <span aria-hidden="true">♪ </span>
+                      {graPejzaz === i ? t.ukryjPejzaz : t.pejzaz(muzyka.title)}
+                    </button>
                   )}
                 </div>
+                {muzyka && graPejzaz === i && (
+                  <div className="mt-5">
+                    <OdtwarzaczYT key={muzyka.youtubeId} youtubeId={muzyka.youtubeId} title={muzyka.title} odRazu />
+                  </div>
+                )}
               </section>
             );
           })}
@@ -427,6 +504,8 @@ export default function TarotCzytanie({ jezyk = "en" }: { jezyk?: JezykOdczytu }
                 </button>
                 <Link
                   href={t.linkMuzyka}
+                  target="_blank"
+                  rel="noopener"
                   className="text-sm text-przygaszony underline underline-offset-4 hover:text-kosc"
                 >
                   {t.przegladajMuzyke}

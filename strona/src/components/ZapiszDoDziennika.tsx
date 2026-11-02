@@ -54,7 +54,7 @@ export default function ZapiszDoDziennika({ jezyk, spread, dobycia, intencja }: 
     return (
       <div className="mx-auto mt-10 max-w-3xl text-center text-sm">
         <p className="text-zloto-2">{t.zapisano}</p>
-        <Link href={linkDziennika} className="text-przygaszony underline underline-offset-4 hover:text-kosc">
+        <Link href={linkDziennika} target="_blank" rel="noopener" className="text-przygaszony underline underline-offset-4 hover:text-kosc">
           {t.otworzDziennik}
         </Link>
       </div>
