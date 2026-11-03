@@ -15,6 +15,7 @@ const TEKSTY = {
       { href: "/cards/", label: "All 78 Card Meanings" },
       { href: "/music/", label: "Music Library" },
       { href: "/guide/", label: "Tarot Guide" },
+      { href: "/advertise/", label: "Advertise" },
       { href: "/privacy/", label: "Privacy" },
     ],
     muzyka: "The Music",

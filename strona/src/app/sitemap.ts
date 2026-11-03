@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${DOMENA}/cards/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.8 },
     { url: `${DOMENA}/guide/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.7 },
     { url: `${DOMENA}/about/`, lastModified: teraz, changeFrequency: "yearly", priority: 0.4 },
+    { url: `${DOMENA}/advertise/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.3 },
     { url: `${DOMENA}/privacy/`, lastModified: teraz, changeFrequency: "yearly", priority: 0.2 },
     { url: `${DOMENA}/journal/`, lastModified: teraz, changeFrequency: "monthly", priority: 0.5 },
   ];
