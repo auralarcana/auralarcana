@@ -8,7 +8,7 @@ import { DOMENA, NAZWA, OPIS_KROTKI } from "@/data/strona";
 
 const cinzel = Cinzel({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500"],
   variable: "--font-cinzel",
   display: "swap",
 });
@@ -19,6 +19,8 @@ const garamond = EB_Garamond({
   style: ["normal", "italic"],
   variable: "--font-garamond",
   display: "swap",
+  // Nagłówek H1 (element LCP) jest w Cinzel; Garamond nie konkuruje o łącze przy starcie.
+  preload: false,
 });
 
 export const metadata: Metadata = {

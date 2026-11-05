@@ -5,7 +5,7 @@ import OdtwarzaczYT from "@/components/OdtwarzaczYT";
 import { FaqJsonLd } from "@/components/DaneStrukturalne";
 import { znajdzKarte } from "@/data/karty";
 import { KARTY } from "@/data/karty";
-import KartaDnia from "@/components/KartaDnia";
+import KartaDnia, { type KartaDniaDane } from "@/components/KartaDnia";
 import { SPREADY } from "@/data/spready";
 import { UTWORY } from "@/data/muzyka";
 import { ARTYKULY } from "@/data/artykuly";
@@ -25,7 +25,9 @@ export default function StronaGlowna() {
   const wyrozniane = UTWORY.filter((u) => u.featured);
   const artykuly = ARTYKULY.slice(0, 3);
   const kartyDnia = KARTY.map(
-    ({ description, upright, reversed, questions, keywordsReversed, ...reszta }) => reszta,
+    // Tylko pola potrzebne karcie dnia: mniejszy HTML strony głównej.
+    ({ slug, slugEn, name, numeral, essence, keywords }) =>
+      ({ slug, slugEn, name, numeral, essence, keywords: keywords.slice(0, 4) }) as KartaDniaDane,
   );
 
   return (
@@ -35,7 +37,7 @@ export default function StronaGlowna() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pb-20 pt-16 md:grid-cols-2 md:pt-24">
-          <div className="wejscie">
+          <div className="wejscie-hero">
             <p className="etykieta mb-4">Supernatural tarot · atmospheric music</p>
             <h1 className="mb-6 text-4xl leading-tight sm:text-5xl">
               The cards are shuffled.
